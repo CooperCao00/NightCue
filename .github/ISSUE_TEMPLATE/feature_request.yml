@@ -1,0 +1,22 @@
+name: Feature request / 功能建议
+description: Suggest an improvement / 提出改进建议
+title: "[Feature] "
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What problem would this solve? / 希望解决什么问题？
+      description: Describe a concrete situation rather than only a proposed feature.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Suggested behavior / 建议的行为
+      description: How can this preserve quiet reminders and user control over theme changes?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or examples / 替代方案或示例

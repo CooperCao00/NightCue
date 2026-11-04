@@ -1,0 +1,31 @@
+# Build output
+artifacts/
+**/bin/
+**/obj/
+**/build/
+**/test-data/
+*.exe
+*.dll
+*.pdb
+*.zip
+
+# Local runtime data (never commit)
+settings.xml
+state.xml
+error.log
+*.log
+*.tmp
+
+# Local-only issue notes (keep on disk; never publish to GitHub)
+docs/问题记录.md
+
+# IDE and operating system
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+Thumbs.db
+Desktop.ini
+.DS_Store

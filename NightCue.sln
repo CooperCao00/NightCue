@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NightCue", "src\NightCue\NightCue.csproj", "{C6FBC993-0C99-4E4F-A0F5-2EB4F9CB878D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NightCue.Tests", "tests\NightCue.Tests\NightCue.Tests.csproj", "{76A11B45-AD4D-449A-86E4-5B69B523590F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6FBC993-0C99-4E4F-A0F5-2EB4F9CB878D}.Debug|Any CPU.ActiveCfg = Debug|AnyCPU
+		{C6FBC993-0C99-4E4F-A0F5-2EB4F9CB878D}.Debug|Any CPU.Build.0 = Debug|AnyCPU
+		{C6FBC993-0C99-4E4F-A0F5-2EB4F9CB878D}.Release|Any CPU.ActiveCfg = Release|AnyCPU
+		{C6FBC993-0C99-4E4F-A0F5-2EB4F9CB878D}.Release|Any CPU.Build.0 = Release|AnyCPU
+		{76A11B45-AD4D-449A-86E4-5B69B523590F}.Debug|Any CPU.ActiveCfg = Debug|AnyCPU
+		{76A11B45-AD4D-449A-86E4-5B69B523590F}.Debug|Any CPU.Build.0 = Debug|AnyCPU
+		{76A11B45-AD4D-449A-86E4-5B69B523590F}.Release|Any CPU.ActiveCfg = Release|AnyCPU
+		{76A11B45-AD4D-449A-86E4-5B69B523590F}.Release|Any CPU.Build.0 = Release|AnyCPU
+	EndGlobalSection
+EndGlobal

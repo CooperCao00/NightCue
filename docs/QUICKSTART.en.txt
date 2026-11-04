@@ -1,0 +1,48 @@
+NightCue 1.2.0 — quiet night-theme reminders
+
+Requires Windows with .NET Framework 4.8 or later. The interface is Simplified Chinese.
+Extract all files to a writable folder and run NightCue.exe. No administrator access is required.
+
+Default reminder window: 23:00–07:00, using your local Windows time.
+Place the tray icon next to the clock. The app will not show notification banners or play sounds.
+
+Amber moon: a choice is pending.
+Gray ring: outside the reminder window, snoozed, or dismissed tonight.
+Blue moon: both Windows and app themes are dark.
+
+Tray menu translation:
+进入深色模式 = Switch to dark mode
+切换到浅色模式 = Switch to light mode
+15 分钟后提醒 = Snooze for 15 minutes (duration is configurable)
+今晚保持浅色 = Keep light tonight (switches to light and dismisses tonight's cue)
+恢复今晚提醒 = Restore tonight's reminder
+设置 = Settings
+使用说明 = Chinese help (this English file can be opened separately)
+退出 = Exit
+
+Settings translation:
+开始 = Start time; 结束 / 次日结束 = End time / Next-day end
+保存并收起 = Save settings
+登录后自动运行 = Run when signing in to Windows
+快捷键 = Hotkey
+
+Ctrl + Alt + Shift + D toggles both Windows and app themes.
+Closing the settings window leaves the tray app running. Exit from the tray menu to stop it.
+The theme changes only on a click or hotkey. It does not automatically return to light in the morning.
+Snooze returns the amber icon after the selected delay; it never creates a recurring pop-up.
+Choices and snoozes survive restarts and midnight. A new night resets the decision.
+
+The app does not detect room lighting, monitor focus, wake the computer, send data, or update itself.
+Apps must support following the Windows theme. Avoid conflicting schedules in other theme tools.
+The current executable is unsigned. SHA256SUMS.txt accompanies release downloads.
+
+Settings and state are saved next to the executable in settings.xml and state.xml.
+Errors are saved locally in error.log, which may contain paths. Review logs before sharing.
+If startup fails due to malformed settings, exit the app, back up the XML files, then rename them and restart.
+
+Before moving or uninstalling: disable sign-in startup and save, then exit the tray app.
+Move or delete the folder. If moved, re-enable startup from the new location.
+Upgrading: exit the old app, extract the new release into the existing folder, and keep your XML files.
+Running another copy opens the already-running instance. Do not run old and new copies side by side.
+
+MIT License — Copyright (c) 2026 NightCue contributors. See LICENSE in this folder.

@@ -1,0 +1,42 @@
+name: Bug report / 问题反馈
+description: Report an unexpected behavior / 反馈异常行为
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please remove personal paths and private information from logs/screenshots.
+        请删除日志及截图中的个人路径和隐私信息。安全问题请遵循 SECURITY.md。
+  - type: input
+    id: version
+    attributes:
+      label: NightCue version / 程序版本
+      placeholder: "1.2.0, release ZIP or built from source"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Windows and display / 系统与显示设置
+      description: Windows version, display scaling, and whether other theme tools are running.
+      placeholder: "Windows 11, 150%, no other theme scheduler"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / 复现步骤
+      description: Include reminder start/end times and relevant tray choices.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior / 预期与实际表现
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Relevant logs or screenshots / 相关日志或截图
+      description: Optional. Review error.log for personal paths before sharing.
