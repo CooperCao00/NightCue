@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language code="es" name="Español" font="Segoe UI">
+  <string key="SettingsTitle">NightCue · Ajustes</string>
+  <string key="HeroTitle">Modo oscuro,
+cuando quieras.</string>
+  <string key="HeroBody">Una pequeña luna a un lado.
+Sin prisa ni interrupciones.</string>
+  <string key="QuietFooter">Sin sonido ni ventanas emergentes</string>
+  <string key="PageTitle">Preferencias nocturnas</string>
+  <string key="PageSubtitle">Un aviso discreto para seguir concentrado.</string>
+  <string key="LightTitle">Modo claro</string>
+  <string key="DarkTitle">Modo oscuro</string>
+  <string key="LightIdle">Luminoso y claro</string>
+  <string key="LightActive">Activo · Claro</string>
+  <string key="DarkIdle">Suave y tranquilo</string>
+  <string key="DarkActive">Activo · Oscuro</string>
+  <string key="WindowLabel">Horario del aviso</string>
+  <string key="EveryDay">Cada día</string>
+  <string key="Start">Inicio</string>
+  <string key="End">Fin</string>
+  <string key="EndNext">Fin · día siguiente</string>
+  <string key="WindowHint">Solo cambia el icono. Tú decides cuándo cambiar el tema.</string>
+  <string key="SnoozeLabel">Posponer durante</string>
+  <string key="Minutes">min</string>
+  <string key="StartupLabel">Iniciar al entrar en Windows</string>
+  <string key="HotkeyLabel">Atajo de tema</string>
+  <string key="LanguageLabel">Idioma / Language</string>
+  <string key="SystemDefault">Seguir a Windows</string>
+  <string key="LanguageHint">Vista previa del idioma. Guarda para conservarlo.</string>
+  <string key="More">Más ···</string>
+  <string key="Save">Guardar y ocultar</string>
+  <string key="HideHint">Sigue activo en la bandeja</string>
+  <string key="SwitchDark">Cambiar a modo oscuro</string>
+  <string key="SwitchLight">Cambiar a modo claro</string>
+  <string key="SnoozeMenu">Recordar en {0} min</string>
+  <string key="KeepLight">Mantener claro esta noche</string>
+  <string key="Restore">Reactivar el aviso de esta noche</string>
+  <string key="SettingsMenu">Ajustes…</string>
+  <string key="Help">Ayuda rápida</string>
+  <string key="Exit">Salir</string>
+  <string key="Pending">Cambia a oscuro cuando quieras</string>
+  <string key="Snoozed">Pospuesto hasta las {0}</string>
+  <string key="DarkNight">Oscuro · Sin más avisos esta noche</string>
+  <string key="DarkDay">Oscuro · Cambia cuando quieras</string>
+  <string key="Dismissed">Sin más avisos esta noche</string>
+  <string key="Starts">Avisos a partir de las {0}</string>
+  <string key="HeadingPending">Cuando quieras</string>
+  <string key="HeadingSnoozed">Hasta luego</string>
+  <string key="HeadingDark">Modo oscuro activado</string>
+  <string key="HeadingDismissed">Una noche tranquila</string>
+  <string key="HeadingDay">Esperando en silencio</string>
+  <string key="HotkeyOff">Atajo desactivado</string>
+  <string key="HotkeyConflict">Otro programa usa el atajo. Usa el menú de la bandeja.</string>
+  <string key="HotkeyConflictShort">Atajo no disponible</string>
+  <string key="InvalidTimes">Usa horas de inicio y fin distintas en formato de 24 horas.</string>
+  <string key="InvalidStart">Introduce una hora de inicio como 23:00.</string>
+  <string key="InvalidEnd">Introduce una hora de fin como 07:00.</string>
+  <string key="InvalidSnooze">El intervalo debe ser de 1 a 120 minutos.</string>
+  <string key="ReadFailure">No se pueden leer o guardar datos. Consulta error.log.</string>
+  <string key="ThemeFailure">No se pudo cambiar el tema. Consulta error.log.</string>
+  <string key="SaveFailure">No se pudieron guardar los ajustes. Consulta error.log.</string>
+  <string key="StartFailure">NightCue no pudo iniciarse. Consulta error.log.</string>
+  <string key="MissingResource">Falta la vista de ajustes.</string>
+  <string key="PreviewNotice">Solo vista previa. No se cambiará la configuración del sistema.</string>
+  <string key="PreviewValid">Ajustes válidos. La vista previa no guarda cambios.</string>
+  <string key="LessMinutes">Reducir el intervalo</string>
+  <string key="MoreMinutes">Aumentar el intervalo</string>
+  <string key="HelpTitle">NightCue · Ayuda rápida</string>
+  <string key="HelpBody">Muestra el icono junto al reloj. Ámbar: elección pendiente; gris: en espera, pospuesto o terminado por hoy; azul: modo oscuro.
+
+Haz clic izquierdo en el icono para abrir la configuración; el clic derecho abre el menú de temas y avisos. Ctrl + Alt + Shift + D también cambia el tema. Nunca cambia automáticamente, tampoco por la mañana.
+
+En Ajustes puedes elegir el horario, el intervalo y el idioma. El idioma es una vista previa hasta que guardes. Cerrar sin guardar restaura el idioma anterior. Seguir a Windows usa el idioma de pantalla al iniciar; si no está disponible, usa inglés.
+
+NightCue funciona localmente, sin red. Los ajustes se guardan junto al ejecutable. Antes de borrar o mover la carpeta, desactiva el inicio con Windows, guarda y sal desde el menú del icono.
+
+Abre la flecha junto al reloj y arrastra NightCue a la barra de tareas. También puedes mostrarlo en la configuración de la barra de tareas de Windows (Windows 11: otros iconos de la bandeja del sistema; Windows 10: seleccionar los iconos que aparecen en la barra de tareas). Windows controla la visibilidad; la aplicación no puede anclarse sola. Después de la hora de fin, un sol dorado sugiere el modo claro. El tema nunca cambia automáticamente.</string>
+  <string key="MorningLabel">Sugerir el modo claro después de la hora de fin</string>
+  <string key="LightPending">Cambia al modo claro cuando quieras</string>
+  <string key="LightSnoozed">Aviso del modo claro pospuesto hasta las {0}</string>
+  <string key="LightDismissed">No habrá más avisos del modo claro en este período</string>
+  <string key="HeadingLightPending">¿Listo para un día más claro?</string>
+  <string key="HeadingLightDismissed">Un día tranquilo</string>
+  <string key="KeepDark">Mantener el modo oscuro en este período</string>
+  <string key="RestoreDay">Restaurar el aviso del modo claro</string>
+  <string key="TrayGuide">Mantener visible el icono…</string>
+  <string key="TrayGuideBody">Abre la flecha junto al reloj y arrastra NightCue a la barra de tareas. También puedes mostrarlo en la configuración de la barra de tareas de Windows (Windows 11: otros iconos de la bandeja del sistema; Windows 10: seleccionar los iconos que aparecen en la barra de tareas). Windows controla la visibilidad; la aplicación no puede anclarse sola. Después de la hora de fin, un sol dorado sugiere el modo claro. El tema nunca cambia automáticamente.</string>
+  <string key="TrayHint">Consejo: arrastra NightCue desde los iconos ocultos hasta el reloj.</string>
+  <string key="StartupRepair">El inicio apunta a otra ubicación. Guarda para usar esta copia.</string>
+</language>

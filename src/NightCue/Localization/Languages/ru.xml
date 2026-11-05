@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language code="ru" name="Русский" font="Segoe UI">
+  <string key="SettingsTitle">NightCue · Настройки</string>
+  <string key="HeroTitle">Тёмная тема,
+когда удобно.</string>
+  <string key="HeroBody">Маленькая луна в углу.
+Без спешки и отвлечений.</string>
+  <string key="QuietFooter">Без звука и всплывающих окон</string>
+  <string key="PageTitle">Вечерние настройки</string>
+  <string key="PageSubtitle">Ненавязчивое напоминание без потери внимания.</string>
+  <string key="LightTitle">Светлая тема</string>
+  <string key="DarkTitle">Тёмная тема</string>
+  <string key="LightIdle">Светло и чётко</string>
+  <string key="LightActive">Активна · Светлая</string>
+  <string key="DarkIdle">Мягко и спокойно</string>
+  <string key="DarkActive">Активна · Тёмная</string>
+  <string key="WindowLabel">Время напоминаний</string>
+  <string key="EveryDay">Ежедневно</string>
+  <string key="Start">Начало</string>
+  <string key="End">Конец</string>
+  <string key="EndNext">Конец · следующий день</string>
+  <string key="WindowHint">Меняется только значок. Тему вы выбираете сами.</string>
+  <string key="SnoozeLabel">Отложить на</string>
+  <string key="Minutes">мин</string>
+  <string key="StartupLabel">Запускать при входе</string>
+  <string key="HotkeyLabel">Горячая клавиша</string>
+  <string key="LanguageLabel">Язык / Language</string>
+  <string key="SystemDefault">Как в Windows</string>
+  <string key="LanguageHint">Предпросмотр языка. Сохраните выбор.</string>
+  <string key="More">Ещё ···</string>
+  <string key="Save">Сохранить и скрыть</string>
+  <string key="HideHint">Продолжит работу в трее</string>
+  <string key="SwitchDark">Включить тёмную тему</string>
+  <string key="SwitchLight">Включить светлую тему</string>
+  <string key="SnoozeMenu">Напомнить через {0} мин</string>
+  <string key="KeepLight">Оставить светлую на ночь</string>
+  <string key="Restore">Вернуть напоминание на сегодня</string>
+  <string key="SettingsMenu">Настройки…</string>
+  <string key="Help">Краткая справка</string>
+  <string key="Exit">Выход</string>
+  <string key="Pending">Включите тёмную тему, когда удобно</string>
+  <string key="Snoozed">Отложено до {0}</string>
+  <string key="DarkNight">Тёмная тема · На сегодня всё</string>
+  <string key="DarkDay">Тёмная тема · Смените, когда удобно</string>
+  <string key="Dismissed">На сегодня напоминания отключены</string>
+  <string key="Starts">Напоминания с {0}</string>
+  <string key="HeadingPending">Когда вам удобно</string>
+  <string key="HeadingSnoozed">До скорого</string>
+  <string key="HeadingDark">Тёмная тема включена</string>
+  <string key="HeadingDismissed">Спокойного вечера</string>
+  <string key="HeadingDay">Тихо ждём</string>
+  <string key="HotkeyOff">Горячая клавиша отключена</string>
+  <string key="HotkeyConflict">Клавиши заняты другим приложением. Используйте меню в трее.</string>
+  <string key="HotkeyConflictShort">Клавиши заняты</string>
+  <string key="InvalidTimes">Введите разное время начала и конца в 24-часовом формате.</string>
+  <string key="InvalidStart">Введите время начала, например 23:00.</string>
+  <string key="InvalidEnd">Введите время конца, например 07:00.</string>
+  <string key="InvalidSnooze">Задайте интервал от 1 до 120 минут.</string>
+  <string key="ReadFailure">Ошибка чтения или записи. См. error.log в папке программы.</string>
+  <string key="ThemeFailure">Не удалось сменить тему. См. error.log.</string>
+  <string key="SaveFailure">Не удалось сохранить настройки. См. error.log.</string>
+  <string key="StartFailure">Не удалось запустить NightCue. См. error.log в папке программы.</string>
+  <string key="MissingResource">Не найден ресурс окна настроек.</string>
+  <string key="PreviewNotice">Только предпросмотр. Системные настройки не изменятся.</string>
+  <string key="PreviewValid">Настройки верны. Предпросмотр не сохраняет изменения.</string>
+  <string key="LessMinutes">Уменьшить интервал</string>
+  <string key="MoreMinutes">Увеличить интервал</string>
+  <string key="HelpTitle">NightCue · Справка</string>
+  <string key="HelpBody">Покажите значок рядом с часами. Янтарный: ожидается выбор; серый: ожидание, отсрочка или на сегодня всё; синий: тёмная тема.
+
+Щелчок левой кнопкой по значку открывает настройки; правой — меню тем и напоминаний. Ctrl + Alt + Shift + D тоже переключает тему. Автоматической смены нет, даже утром.
+
+В настройках задаются время, интервал и язык. До сохранения язык меняется только для предпросмотра. Закрытие без сохранения возвращает прежний язык. Режим «Как в Windows» выбирает язык интерфейса при запуске; если перевода нет, используется английский.
+
+NightCue работает локально, без сети. Настройки хранятся рядом с программой. Перед удалением или переносом отключите запуск при входе, сохраните и выйдите через меню значка.
+
+Нажмите стрелку рядом с часами и перетащите NightCue на панель задач. Значок также можно включить в параметрах панели задач Windows (Windows 11: другие значки панели задач; Windows 10: выбор значков, отображаемых в панели задач). Видимостью управляет Windows; приложение не может закрепить себя само. После времени окончания золотое солнце предлагает светлую тему. Тема никогда не меняется автоматически.</string>
+  <string key="MorningLabel">Предлагать светлую тему после времени окончания</string>
+  <string key="LightPending">Включите светлую тему, когда будете готовы</string>
+  <string key="LightSnoozed">Напоминание о светлой теме отложено до {0}</string>
+  <string key="LightDismissed">До следующего начала напоминаний больше не будет</string>
+  <string key="HeadingLightPending">Готовы к светлому дню?</string>
+  <string key="HeadingLightDismissed">Спокойный день</string>
+  <string key="KeepDark">Оставить тёмную тему до следующего начала</string>
+  <string key="RestoreDay">Вернуть напоминание о светлой теме</string>
+  <string key="TrayGuide">Сделать значок в трее видимым…</string>
+  <string key="TrayGuideBody">Нажмите стрелку рядом с часами и перетащите NightCue на панель задач. Значок также можно включить в параметрах панели задач Windows (Windows 11: другие значки панели задач; Windows 10: выбор значков, отображаемых в панели задач). Видимостью управляет Windows; приложение не может закрепить себя само. После времени окончания золотое солнце предлагает светлую тему. Тема никогда не меняется автоматически.</string>
+  <string key="TrayHint">Совет: перетащите NightCue из скрытых значков к часам.</string>
+  <string key="StartupRepair">Автозапуск указывает на другое место. Сохраните, чтобы обновить путь.</string>
+</language>

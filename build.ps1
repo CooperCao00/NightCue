@@ -28,11 +28,16 @@ $references = @(
     "/r:$wpf\PresentationCore.dll", "/r:$wpf\WindowsFormsIntegration.dll"
 )
 
+$languageResources = @(Get-ChildItem -LiteralPath (Join-Path $source 'Localization\Languages') -Filter '*.xml' -File | ForEach-Object {
+    '/resource:{0},NightCue.Languages.{1}' -f $_.FullName, $_.Name
+})
+[xml]$project = Get-Content -LiteralPath (Join-Path $source 'NightCue.csproj') -Raw
+$compileSources = @($project.Project.ItemGroup.Compile | Where-Object { $_.Include } | ForEach-Object { Join-Path $source $_.Include })
 & $compiler /nologo /codepage:65001 /target:winexe /optimize+ /platform:anycpu `
     "/win32icon:$source\Assets\NightCue.ico" `
     "/win32manifest:$source\Assets\NightCue.manifest" `
-    "/resource:$source\SettingsView.xaml,NightCue.SettingsView.xaml" `
-    /warnaserror+ "/out:$application" @references "$source\NightCue.cs" "$source\SettingsForm.cs" "$source\Properties\AssemblyInfo.cs"
+    "/resource:$source\Shell\SettingsView.xaml,NightCue.SettingsView.xaml" `
+    /warnaserror+ "/out:$application" @references @languageResources @compileSources
 if ($LASTEXITCODE -ne 0) { throw "Application build failed (exit $LASTEXITCODE)." }
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'docs\使用说明.txt') -Destination $appDir -Force
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'docs\QUICKSTART.en.txt') -Destination $appDir -Force

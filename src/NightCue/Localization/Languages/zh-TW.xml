@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language code="zh-TW" name="繁體中文" font="Microsoft JhengHei UI">
+  <string key="SettingsTitle">夜色提醒 · 設定</string>
+  <string key="HeroTitle">等你方便時，
+再換成深色。</string>
+  <string key="HeroBody">一枚月亮，留在餘光裡。
+不催促，也不打斷。</string>
+  <string key="QuietFooter">無聲音 · 無彈窗 · 由你決定</string>
+  <string key="PageTitle">夜間偏好</string>
+  <string key="PageSubtitle">安排好提醒，把注意力留給正在做的事。</string>
+  <string key="LightTitle">日間淺色</string>
+  <string key="DarkTitle">夜間深色</string>
+  <string key="LightIdle">明亮、清晰</string>
+  <string key="LightActive">使用中 · 淺色</string>
+  <string key="DarkIdle">柔和、沉靜</string>
+  <string key="DarkActive">使用中 · 深色</string>
+  <string key="WindowLabel">提醒時段</string>
+  <string key="EveryDay">每天</string>
+  <string key="Start">開始</string>
+  <string key="End">結束</string>
+  <string key="EndNext">隔日結束</string>
+  <string key="WindowHint">到點只顯示月亮標記，結束時也不會自動變更佈景主題。</string>
+  <string key="SnoozeLabel">稍後再提醒</string>
+  <string key="Minutes">分鐘</string>
+  <string key="StartupLabel">登入後自動執行</string>
+  <string key="HotkeyLabel">快捷鍵切換</string>
+  <string key="LanguageLabel">語言 / Language</string>
+  <string key="SystemDefault">跟隨系統</string>
+  <string key="LanguageHint">已預覽語言，儲存後保留你的選擇。</string>
+  <string key="More">更多操作 ···</string>
+  <string key="Save">儲存並收起</string>
+  <string key="HideHint">收起後繼續在系統匣執行</string>
+  <string key="SwitchDark">切換至深色模式</string>
+  <string key="SwitchLight">切換至淺色模式</string>
+  <string key="SnoozeMenu">{0} 分鐘後提醒</string>
+  <string key="KeepLight">今晚保持淺色</string>
+  <string key="Restore">恢復今晚提醒</string>
+  <string key="SettingsMenu">設定…</string>
+  <string key="Help">使用說明</string>
+  <string key="Exit">結束</string>
+  <string key="Pending">可以切換深色了，等你方便時</string>
+  <string key="Snoozed">已延後至 {0}</string>
+  <string key="DarkNight">目前為深色，今晚不再提醒</string>
+  <string key="DarkDay">目前為深色，可手動切回淺色</string>
+  <string key="Dismissed">今晚不再提醒</string>
+  <string key="Starts">{0} 開始提醒</string>
+  <string key="HeadingPending">等你方便時</string>
+  <string key="HeadingSnoozed">稍後再見</string>
+  <string key="HeadingDark">夜間深色已開啟</string>
+  <string key="HeadingDismissed">今晚安心專注</string>
+  <string key="HeadingDay">安靜等待中</string>
+  <string key="HotkeyOff">快捷鍵已關閉</string>
+  <string key="HotkeyConflict">快捷鍵被其他應用程式佔用，可使用系統匣選單切換。</string>
+  <string key="HotkeyConflictShort">快捷鍵已被佔用</string>
+  <string key="InvalidTimes">開始和結束時間須為不同的 24 小時制時間。</string>
+  <string key="InvalidStart">開始時間請填寫為 23:00 這樣的格式。</string>
+  <string key="InvalidEnd">結束時間請填寫為 07:00 這樣的格式。</string>
+  <string key="InvalidSnooze">延後時間須為 1–120 分鐘。</string>
+  <string key="ReadFailure">儲存或讀取失敗，請查看資料夾內的 error.log。</string>
+  <string key="ThemeFailure">無法切換佈景主題，請查看 error.log。</string>
+  <string key="SaveFailure">未能儲存設定，請查看 error.log。</string>
+  <string key="StartFailure">夜色提醒未能啟動，詳情見資料夾中的 error.log。</string>
+  <string key="MissingResource">找不到介面資源。</string>
+  <string key="PreviewNotice">介面預覽，不會變更系統設定。</string>
+  <string key="PreviewValid">設定格式正確。預覽模式不會儲存或變更系統。</string>
+  <string key="LessMinutes">減少延後分鐘數</string>
+  <string key="MoreMinutes">增加延後分鐘數</string>
+  <string key="HelpTitle">夜色提醒 · 使用說明</string>
+  <string key="HelpBody">請將系統匣圖示顯示在時鐘旁。琥珀色表示等待選擇；灰色表示等待、延後或今晚已處理；藍色表示深色模式。
+
+左鍵點擊系統匣圖示開啟設定；右鍵開啟主題切換、延後與提醒選單。 Ctrl + Alt + Shift + D 也可切換。程式不會自動換色，包括早晨。
+
+設定中可修改提醒時段、延後與語言。切換語言先預覽，儲存後生效；不儲存直接關閉會恢復原語言。「跟隨系統」在啟動時配合 Windows 顯示語言，不支援的語言使用英語。
+
+程式完全在本機執行，無網路請求。設定與當晚選擇儲存在程式旁。解除安裝或移動前，先關閉登入啟動並儲存，從系統匣結束程式，再刪除或移動資料夾。
+
+點選時鐘旁的隱藏圖示箭頭，將 NightCue 拖曳到工作列。也可以在 Windows 工作列設定中啟用 NightCue（Windows 11：其他系統匣圖示；Windows 10：選取要顯示在工作列上的圖示）。圖示顯示由 Windows 管理，軟體無法自行釘選。結束時間後，金色太陽提示可以切換淺色，始終由你決定是否切換。</string>
+  <string key="MorningLabel">結束時間後提醒切換淺色</string>
+  <string key="LightPending">準備好時，再切換淺色</string>
+  <string key="LightSnoozed">淺色提醒已延後至 {0}</string>
+  <string key="LightDismissed">本時段不再提醒切換淺色</string>
+  <string key="HeadingLightPending">準備迎接明亮的一天</string>
+  <string key="HeadingLightDismissed">白天，也安靜相伴</string>
+  <string key="KeepDark">本時段保持深色</string>
+  <string key="RestoreDay">恢復淺色提醒</string>
+  <string key="TrayGuide">讓系統匣圖示保持可見…</string>
+  <string key="TrayGuideBody">點選時鐘旁的隱藏圖示箭頭，將 NightCue 拖曳到工作列。也可以在 Windows 工作列設定中啟用 NightCue（Windows 11：其他系統匣圖示；Windows 10：選取要顯示在工作列上的圖示）。圖示顯示由 Windows 管理，軟體無法自行釘選。結束時間後，金色太陽提示可以切換淺色，始終由你決定是否切換。</string>
+  <string key="TrayHint">小提示：將 NightCue 從隱藏圖示區拖曳到時鐘旁，方便看到提醒。</string>
+  <string key="StartupRepair">自動啟動仍指向其他位置。儲存後將改用目前的程式。</string>
+</language>

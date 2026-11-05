@@ -1,24 +1,35 @@
-# NightCue 1.2.0 · 夜色提醒
+# NightCue 1.3.1 · 夜色提醒
 
-A quiet Windows tray reminder for switching themes when you are ready. Default reminder window: **23:00–07:00**. No sounds, banners or automatic theme changes.
+Patch release fixing Settings reopening from the tray. Ten languages and the optional morning cue remain available. Default window: **23:00–07:00**. No sounds, banners, flashing or automatic theme changes.
 
-安静的 Windows 夜间主题提醒。默认 **23:00–次日 07:00** 提醒；等你关灯或有空时，再手动切换深色。无声音、横幅或自动换色。
+修复托盘重新打开设置的补丁版本，保留十种语言和可选的早晨浅色提醒。默认 **23:00–次日 07:00**；无声音、横幅、闪烁或自动换色。
 
-- Manual light/dark switching, configurable snooze, keep-light-tonight choice and optional sign-in startup.
-- Simplified Chinese UI; English and Chinese documentation.
-- MIT license, credited to NightCue contributors.
-- This release adds open-source project documentation, build/package automation and locale/XML regression checks.
+## What changed / 更新内容
+
+- **Left-click opens Settings directly.** It activates an existing window, recreates one that was closed, and restores a minimized window. / **左键直接打开设置**：已有窗口会激活，关闭后重新创建，最小化后恢复。
+- **Right-click keeps the quick menu** for themes, snooze and Exit. / **右键保留快捷菜单**，用于主题切换、延后和退出。
+- Three regression cycles cover closing and recreating Settings with a shared icon and restoring the unsaved language choice. See [VALIDATION.md](VALIDATION.md) for actual checks and remaining desktop coverage. / 新增三个窗口生命周期回归用例，实际验证及未覆盖范围见验证记录。
+
+The existing quiet cues, ten-language selection, startup-path repair and MIT license are unchanged. Previous release details are in [CHANGELOG.md](../CHANGELOG.md).
+
+原有安静提醒、十种语言、启动路径修复及 MIT 许可保持不变；此前版本内容见更新记录。
 
 ## Downloads / 下载
 
-- `NightCue-v1.2.0-windows-portable.zip`: extract all files to a writable folder and run NightCue.exe. / 完整解压到可写目录后运行。
-- `NightCue-source-v1.2.0.zip`: complete source project, documentation and workflows. / 完整工程、文档和自动构建配置。
+- `NightCue-v1.3.1-windows-portable.zip`: extract all files to a writable folder and run NightCue.exe. / 完整解压到可写目录后运行。
+- `NightCue-source-v1.3.1.zip`: source, documentation and build workflows. / 源码、文档与构建配置。
 - `SHA256SUMS.txt`: SHA-256 checksums for both ZIPs. / 两个 ZIP 的校验值。
 
-Requires .NET Framework 4.8 or later. Windows 11 is the manually tested environment; Windows 10 and ARM64 are not yet manually verified. The executable is unsigned. See the README for remaining limitations.
+Requires .NET Framework 4.8 or later. Windows 11 is the local test environment. Windows 10 is a compatibility target; Windows 10 and ARM64 have not been tested on their respective machines. The executable is unsigned. See [compatibility](COMPATIBILITY.md) and the [validation record](VALIDATION.md).
 
-需要 .NET Framework 4.8 或更高版本。已手动验证 Windows 11；Windows 10、ARM64 尚未手动验证。程序未签名，其他限制见 README。
+需要 .NET Framework 4.8 或更高版本。当前在 Windows 11 上开发验证；Windows 10 是兼容目标，Windows 10 与 ARM64 尚未真机验证。程序未签名，具体范围见上述文档。
 
-Upgrade: exit the old tray app before extracting the new files into its folder; preserve settings.xml and state.xml. Keep sign-in startup pointed at the same location, or disable it before moving and re-enable it afterwards.
+## Upgrade / 升级
 
-升级前先从托盘退出旧版，再覆盖程序文件，保留 settings.xml、state.xml；移动位置前关闭登录启动，移动后重新开启。
+Exit the old tray app, replace the program files and preserve `settings.xml` and `state.xml`. Older settings gain the system-language and enabled morning-cue defaults; existing night choices are retained. If you moved the folder, launch the new copy and save with **Run at sign-in** enabled to update the path. Also check Task Manager if Windows has disabled the startup app.
+
+先从托盘退出旧程序，替换程序文件并保留 `settings.xml`、`state.xml`。旧设置默认跟随系统语言、开启早晨提醒，原夜间选择保留。若移动了文件夹，从新位置运行，保持“登录后自动运行”开启并保存，即可更新路径；如 Windows 禁用了启动应用，还需检查任务管理器。
+
+Translations are included and tested for resource completeness and layout; native-speaker review is welcome. A version number in this source tree does not mean a public Release has already been published.
+
+翻译已纳入资源完整性与布局检查，欢迎母语使用者校对。源码中的版本号不代表已经公开发布。

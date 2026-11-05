@@ -4,50 +4,56 @@
 
 English · [简体中文](README.zh-CN.md) · [MIT license](LICENSE)
 
-NightCue is a small Windows tray app for people whose room lighting does not follow a fixed schedule. At night, an amber moon waits in your taskbar. Switch to dark mode when you are ready, snooze the cue, or keep the light theme for tonight.
+NightCue is a small Windows tray app for people whose room lighting does not follow a fixed schedule. At night, an amber moon waits beside the clock. Switch to dark mode when you are ready, snooze the cue, or keep the light theme for tonight. After the end time, a gold sun can offer light mode just as quietly.
 
 There are no sounds, notification banners, flashing icons, or automatic theme changes. The app does not try to infer whether you are focused or whether your room lights are on.
 
-![NightCue settings in light mode](docs/images/light.png)
+![NightCue settings in light mode](docs/images/light-en.png)
 
 <details>
 <summary>Dark appearance</summary>
 
-![NightCue settings in dark mode](docs/images/dark.png)
+![NightCue settings in dark mode](docs/images/dark-en.png)
 
 </details>
 
 ## Features
 
 - Configurable reminder window, **23:00–07:00** by default; supports crossing midnight.
-- A steady amber tray icon while a choice is pending.
+- A steady amber moon for the night cue and a gold sun for the light-mode cue after the end time.
 - Switch both Windows and app themes manually, using the tray menu or **Ctrl + Alt + Shift + D**.
 - Snooze for **15 minutes** by default, adjustable from 1 to 120 minutes.
-- Keep light mode tonight; decisions and snoozes survive restarts and midnight.
+- Keep light mode tonight or keep dark mode until the next start time. Night and daytime choices and snoozes are independent and survive restarts.
+- Optional light-mode reminder after the end time, enabled by default. Neither cue changes the theme automatically.
 - Optional sign-in startup, local settings, and light/dark settings-window styling.
 
-The interface is currently **Simplified Chinese**. Documentation and the quick start are available in English and Chinese. The end of the reminder window does **not** switch your theme back to light.
+One executable includes **English, Simplified Chinese, Traditional Chinese, Japanese, Korean, German, French, Spanish, Brazilian Portuguese and Russian**. It follows the Windows display language by default, with English as fallback. Choose a language in Settings to preview it immediately; save to keep it, or close without saving to restore the previous choice. No separate language downloads are needed. [Language and font behavior](docs/LOCALIZATION.md).
+
+The default morning cue appears from **07:00 until the next 23:00** if the theme is still dark. You can switch to light, snooze, keep dark for this period, or disable this cue in Settings.
 
 ## Get started
 
-Download `NightCue-v1.2.0-windows-portable.zip` from this repository's **Releases** section once a release has been published. If none is available, build from source below.
+Download `NightCue-v1.3.1-windows-portable.zip` from this repository's **Releases** section once a release has been published. If none is available, build from source below.
 
 1. Extract the entire ZIP to a folder you can write to. Keep this folder in a stable location if you enable sign-in startup.
 2. Run `NightCue.exe`. No administrator access is needed.
-3. Make the moon icon visible next to the clock using Windows taskbar settings or by dragging it out of the overflow menu.
-4. Adjust the reminder window in **设置** (Settings) and select **保存并收起** (Save settings).
+3. Make NightCue visible next to the clock using Windows taskbar settings or by dragging it out of the hidden-icons menu. The tray menu includes visibility guidance; Windows controls pinning.
+4. Left-click the tray icon to open **Settings**, adjust the times and language, then select **Save & hide**.
+
+Left-click opens or activates Settings, recreates it after closing, and restores it when minimized. Right-click opens the quick menu for theme switching, snooze and Exit. This reopening behavior is fixed in **1.3.1**.
 
 | Tray icon | Meaning |
 | --- | --- |
 | Amber moon | A night-theme choice is pending |
-| Gray ring | Outside the window, snoozed, or dismissed for tonight |
-| Blue moon | Windows and app themes are both dark |
+| Gold sun | A light-theme choice is pending after the end time |
+| Gray ring | Waiting, snoozed, or dismissed for the current period |
+| Blue moon | Dark mode, with no active cue |
 
-“15 minutes” means the delay after you explicitly choose **15 分钟后提醒**. It is not a recurring pop-up. [English quick start and menu translation](docs/QUICKSTART.en.txt) · [中文使用说明](docs/使用说明.txt).
+“15 minutes” means the delay after you explicitly choose **Remind me in 15 min**. It is not a recurring pop-up. [English quick start](docs/QUICKSTART.en.txt) · [中文使用说明](docs/使用说明.txt).
 
 ## Requirements and limitations
 
-- Windows 11 is the tested desktop environment. Windows 10 with .NET Framework 4.8 is a compatibility target, but has not been manually tested. Windows ARM64 has not been tested.
+- Windows 11 is the local development and test environment. Windows 10 with .NET Framework 4.8 is a compatibility target, but has not been tested on a Windows 10 machine. Windows ARM64 is also unverified. See the [compatibility matrix](docs/COMPATIBILITY.md) and [validation record](docs/VALIDATION.md) for the exact scope.
 - Requires **.NET Framework 4.8 or later** with the Windows desktop components. The app is AnyCPU and has no third-party runtime packages.
 - Apps and websites must support following the Windows theme. Fixed app themes are not overridden. Mixed Windows/app themes are treated as not fully dark.
 - Disable competing theme schedules in PowerToys Light Switch or Auto Dark Mode to avoid conflicting changes.
@@ -79,11 +85,11 @@ NightCue makes no network requests and includes no analytics or automatic update
 
 Choosing a theme writes only the current user's `AppsUseLightTheme` and `SystemUsesLightTheme` values under `HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize`. Enabling sign-in startup adds a `NightCue` value under `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`. It does not install a service or scheduled task.
 
-To uninstall, turn off **登录后自动运行**, save, choose **退出** (Exit) from the tray menu, then delete the extracted folder. Your current Windows theme remains as chosen. Before moving the app, disable startup and re-enable it from the new location. [Troubleshooting](docs/TROUBLESHOOTING.md).
+To uninstall, turn off **Run at sign-in**, save, choose **Exit** from the tray menu, then delete the extracted folder. Your current Windows theme remains as chosen. When upgrading, exit the old app and preserve `settings.xml` and `state.xml`. If you moved the folder, run the new copy, keep startup enabled and save: NightCue warns about the old path and updates it. If Windows has disabled the startup app in Task Manager, enable it there as well. Actual sign-in behavior still needs to be checked on your machine. [Troubleshooting](docs/TROUBLESHOOTING.md).
 
 ## Contributing
 
-Bug reports, translations, accessibility improvements, and focused pull requests are welcome in English or Chinese. Start with [CONTRIBUTING.md](CONTRIBUTING.md), [the code of conduct](CODE_OF_CONDUCT.md), and [the changelog](CHANGELOG.md). For security concerns, see [SECURITY.md](SECURITY.md).
+Bug reports, translations, accessibility improvements, and focused pull requests are welcome in English or Chinese. Start with the [architecture guide](docs/ARCHITECTURE.md), [translation guide](docs/LOCALIZATION.md), [CONTRIBUTING.md](CONTRIBUTING.md), [the code of conduct](CODE_OF_CONDUCT.md), and [the changelog](CHANGELOG.md). For security concerns, see [SECURITY.md](SECURITY.md).
 
 ## License
 

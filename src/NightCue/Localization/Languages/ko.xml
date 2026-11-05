@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language code="ko" name="한국어" font="Malgun Gothic">
+  <string key="SettingsTitle">NightCue · 설정</string>
+  <string key="HeroTitle">편할 때,
+다크 모드로.</string>
+  <string key="HeroBody">화면 한쪽의 작은 달.
+재촉도 방해도 없이.</string>
+  <string key="QuietFooter">소리 없이 · 팝업 없이 · 내 선택대로</string>
+  <string key="PageTitle">야간 설정</string>
+  <string key="PageSubtitle">조용한 알림으로 하던 일에 집중하세요.</string>
+  <string key="LightTitle">라이트 모드</string>
+  <string key="DarkTitle">다크 모드</string>
+  <string key="LightIdle">밝고 선명하게</string>
+  <string key="LightActive">사용 중 · 라이트</string>
+  <string key="DarkIdle">부드럽고 차분하게</string>
+  <string key="DarkActive">사용 중 · 다크</string>
+  <string key="WindowLabel">알림 시간대</string>
+  <string key="EveryDay">매일</string>
+  <string key="Start">시작</string>
+  <string key="End">종료</string>
+  <string key="EndNext">종료 · 다음 날</string>
+  <string key="WindowHint">시간이 되면 트레이 표시만 바뀝니다. 테마는 자동으로 바뀌지 않습니다.</string>
+  <string key="SnoozeLabel">다시 알림 간격</string>
+  <string key="Minutes">분</string>
+  <string key="StartupLabel">로그인 시 실행</string>
+  <string key="HotkeyLabel">테마 전환 단축키</string>
+  <string key="LanguageLabel">언어 / Language</string>
+  <string key="SystemDefault">Windows 설정 따르기</string>
+  <string key="LanguageHint">언어 미리 보기입니다. 저장하면 선택이 유지됩니다.</string>
+  <string key="More">더 보기 ···</string>
+  <string key="Save">저장 후 닫기</string>
+  <string key="HideHint">닫아도 트레이에서 실행됩니다</string>
+  <string key="SwitchDark">다크 모드로 전환</string>
+  <string key="SwitchLight">라이트 모드로 전환</string>
+  <string key="SnoozeMenu">{0}분 후 다시 알림</string>
+  <string key="KeepLight">오늘 밤은 라이트 모드 유지</string>
+  <string key="Restore">오늘 밤 알림 다시 켜기</string>
+  <string key="SettingsMenu">설정…</string>
+  <string key="Help">사용 안내</string>
+  <string key="Exit">종료</string>
+  <string key="Pending">편할 때 다크 모드로 바꾸세요</string>
+  <string key="Snoozed">{0}까지 알림 미룸</string>
+  <string key="DarkNight">다크 모드 · 오늘 밤 알림 종료</string>
+  <string key="DarkDay">다크 모드 · 원할 때 전환하세요</string>
+  <string key="Dismissed">오늘 밤은 더 이상 알리지 않음</string>
+  <string key="Starts">{0}부터 알림 시작</string>
+  <string key="HeadingPending">편할 때 바꾸세요</string>
+  <string key="HeadingSnoozed">나중에 다시 만나요</string>
+  <string key="HeadingDark">다크 모드 사용 중</string>
+  <string key="HeadingDismissed">오늘 밤은 조용하게</string>
+  <string key="HeadingDay">조용히 기다리는 중</string>
+  <string key="HotkeyOff">단축키 꺼짐</string>
+  <string key="HotkeyConflict">다른 앱이 사용 중입니다. 트레이 메뉴를 이용하세요.</string>
+  <string key="HotkeyConflictShort">단축키 사용 불가</string>
+  <string key="InvalidTimes">시작과 종료를 서로 다른 24시간 형식으로 입력하세요.</string>
+  <string key="InvalidStart">시작 시간을 23:00 형식으로 입력하세요.</string>
+  <string key="InvalidEnd">종료 시간을 07:00 형식으로 입력하세요.</string>
+  <string key="InvalidSnooze">다시 알림은 1~120분으로 설정하세요.</string>
+  <string key="ReadFailure">읽기 또는 저장 실패. 앱 폴더의 error.log를 확인하세요.</string>
+  <string key="ThemeFailure">테마를 바꾸지 못했습니다. error.log를 확인하세요.</string>
+  <string key="SaveFailure">설정을 저장하지 못했습니다. error.log를 확인하세요.</string>
+  <string key="StartFailure">NightCue를 시작하지 못했습니다. 앱 폴더의 error.log를 확인하세요.</string>
+  <string key="MissingResource">설정 화면 리소스가 없습니다.</string>
+  <string key="PreviewNotice">미리 보기입니다. 시스템 설정은 바뀌지 않습니다.</string>
+  <string key="PreviewValid">설정이 올바릅니다. 미리 보기에서는 저장하지 않습니다.</string>
+  <string key="LessMinutes">다시 알림 간격 줄이기</string>
+  <string key="MoreMinutes">다시 알림 간격 늘리기</string>
+  <string key="HelpTitle">NightCue · 사용 안내</string>
+  <string key="HelpBody">트레이 아이콘을 시계 옆에 표시하세요. 호박색은 선택 대기, 회색은 대기·다시 알림·오늘 밤 알림 종료, 파란색은 다크 모드입니다.
+
+트레이 아이콘을 왼쪽 클릭하면 설정이 열리고, 오른쪽 클릭하면 테마 전환과 알림 메뉴가 열립니다. Ctrl + Alt + Shift + D로도 전환합니다. 아침을 포함해 테마는 자동으로 바뀌지 않습니다.
+
+설정에서 시간대, 다시 알림 간격, 언어를 선택하세요. 언어는 저장 전까지 미리 보기이며, 저장하지 않고 닫으면 이전 언어로 돌아갑니다. Windows 설정 따르기는 시작 시 표시 언어를 사용하며, 지원하지 않으면 영어를 사용합니다.
+
+네트워크 요청 없이 로컬에서 실행됩니다. 설정은 실행 파일 옆에 저장됩니다. 삭제하거나 옮기기 전에 로그인 시 실행을 끄고 저장한 뒤 트레이에서 종료하세요.
+
+시계 옆 숨겨진 아이콘 화살표를 누르고 NightCue를 작업 표시줄로 끌어오세요. Windows 작업 표시줄 설정에서도 표시할 수 있습니다(Windows 11: 기타 시스템 트레이 아이콘, Windows 10: 작업 표시줄에 표시할 아이콘 선택). 표시는 Windows가 관리하므로 앱이 직접 고정할 수 없습니다. 종료 시각 이후 금색 해가 라이트 모드를 제안하며 테마는 자동으로 바뀌지 않습니다.</string>
+  <string key="MorningLabel">종료 시각 이후 라이트 모드 알림</string>
+  <string key="LightPending">준비되면 라이트 모드로 전환하세요</string>
+  <string key="LightSnoozed">라이트 모드 알림을 {0}까지 미룸</string>
+  <string key="LightDismissed">다음 시작 시각까지 라이트 모드 알림 없음</string>
+  <string key="HeadingLightPending">밝은 하루를 시작할까요</string>
+  <string key="HeadingLightDismissed">낮에도 조용하게</string>
+  <string key="KeepDark">다음 시작 시각까지 다크 모드 유지</string>
+  <string key="RestoreDay">라이트 모드 알림 다시 켜기</string>
+  <string key="TrayGuide">트레이 아이콘을 항상 표시…</string>
+  <string key="TrayGuideBody">시계 옆 숨겨진 아이콘 화살표를 누르고 NightCue를 작업 표시줄로 끌어오세요. Windows 작업 표시줄 설정에서도 표시할 수 있습니다(Windows 11: 기타 시스템 트레이 아이콘, Windows 10: 작업 표시줄에 표시할 아이콘 선택). 표시는 Windows가 관리하므로 앱이 직접 고정할 수 없습니다. 종료 시각 이후 금색 해가 라이트 모드를 제안하며 테마는 자동으로 바뀌지 않습니다.</string>
+  <string key="TrayHint">팁: 숨겨진 NightCue 아이콘을 시계 옆으로 끌어오세요.</string>
+  <string key="StartupRepair">시작 등록이 다른 위치를 가리킵니다. 저장하면 현재 앱으로 업데이트됩니다.</string>
+</language>

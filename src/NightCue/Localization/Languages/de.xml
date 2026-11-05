@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language code="de" name="Deutsch" font="Segoe UI">
+  <string key="SettingsTitle">NightCue · Einstellungen</string>
+  <string key="HeroTitle">Dunkler Modus,
+wenn es passt.</string>
+  <string key="HeroBody">Ein kleiner Mond am Rand.
+Ohne Eile, ohne Störung.</string>
+  <string key="QuietFooter">Lautlos · Keine Pop-ups · Ihre Wahl</string>
+  <string key="PageTitle">Abendeinstellungen</string>
+  <string key="PageSubtitle">Dezente Erinnerung. Konzentriert bleiben.</string>
+  <string key="LightTitle">Heller Modus</string>
+  <string key="DarkTitle">Dunkler Modus</string>
+  <string key="LightIdle">Hell und klar</string>
+  <string key="LightActive">Aktiv · Hell</string>
+  <string key="DarkIdle">Sanft und ruhig</string>
+  <string key="DarkActive">Aktiv · Dunkel</string>
+  <string key="WindowLabel">Erinnerungszeitraum</string>
+  <string key="EveryDay">Täglich</string>
+  <string key="Start">Beginn</string>
+  <string key="End">Ende</string>
+  <string key="EndNext">Ende · nächster Tag</string>
+  <string key="WindowHint">Nur das Taskleistensymbol ändert sich. Das Design bestimmen Sie.</string>
+  <string key="SnoozeLabel">Erneut erinnern nach</string>
+  <string key="Minutes">Min.</string>
+  <string key="StartupLabel">Bei Anmeldung starten</string>
+  <string key="HotkeyLabel">Design-Tastenkürzel</string>
+  <string key="LanguageLabel">Sprache / Language</string>
+  <string key="SystemDefault">Windows-Sprache verwenden</string>
+  <string key="LanguageHint">Sprachvorschau · Zum Übernehmen speichern.</string>
+  <string key="More">Mehr ···</string>
+  <string key="Save">Speichern &amp; schließen</string>
+  <string key="HideHint">Läuft im Infobereich weiter</string>
+  <string key="SwitchDark">Dunklen Modus aktivieren</string>
+  <string key="SwitchLight">Hellen Modus aktivieren</string>
+  <string key="SnoozeMenu">In {0} Min. erinnern</string>
+  <string key="KeepLight">Heute Abend hell bleiben</string>
+  <string key="Restore">Heutige Erinnerung reaktivieren</string>
+  <string key="SettingsMenu">Einstellungen…</string>
+  <string key="Help">Kurzhilfe</string>
+  <string key="Exit">Beenden</string>
+  <string key="Pending">Bei Gelegenheit dunkel schalten</string>
+  <string key="Snoozed">Zurückgestellt bis {0}</string>
+  <string key="DarkNight">Dunkel · Heute keine Erinnerung mehr</string>
+  <string key="DarkDay">Dunkel · Jederzeit manuell wechseln</string>
+  <string key="Dismissed">Heute keine Erinnerung mehr</string>
+  <string key="Starts">Erinnerung ab {0}</string>
+  <string key="HeadingPending">Wenn es Ihnen passt</string>
+  <string key="HeadingSnoozed">Bis später</string>
+  <string key="HeadingDark">Dunkler Modus aktiv</string>
+  <string key="HeadingDismissed">Ein ruhiger Abend</string>
+  <string key="HeadingDay">Wartet im Hintergrund</string>
+  <string key="HotkeyOff">Tastenkürzel deaktiviert</string>
+  <string key="HotkeyConflict">Tastenkürzel belegt. Bitte das Infobereich-Menü verwenden.</string>
+  <string key="HotkeyConflictShort">Tastenkürzel belegt</string>
+  <string key="InvalidTimes">Start und Ende müssen verschieden sein (24-Stunden-Format).</string>
+  <string key="InvalidStart">Startzeit bitte im Format 23:00 eingeben.</string>
+  <string key="InvalidEnd">Endzeit bitte im Format 07:00 eingeben.</string>
+  <string key="InvalidSnooze">Die Wartezeit muss 1–120 Minuten betragen.</string>
+  <string key="ReadFailure">Lesen oder Speichern fehlgeschlagen. Siehe error.log im App-Ordner.</string>
+  <string key="ThemeFailure">Design konnte nicht geändert werden. Siehe error.log.</string>
+  <string key="SaveFailure">Einstellungen nicht gespeichert. Siehe error.log.</string>
+  <string key="StartFailure">NightCue konnte nicht starten. Siehe error.log im App-Ordner.</string>
+  <string key="MissingResource">Die Einstellungsansicht fehlt.</string>
+  <string key="PreviewNotice">Nur Vorschau. Systemeinstellungen bleiben unverändert.</string>
+  <string key="PreviewValid">Einstellungen gültig. Die Vorschau speichert nichts.</string>
+  <string key="LessMinutes">Wartezeit verkürzen</string>
+  <string key="MoreMinutes">Wartezeit verlängern</string>
+  <string key="HelpTitle">NightCue · Kurzhilfe</string>
+  <string key="HelpBody">Blenden Sie das Symbol neben der Uhr ein. Bernstein bedeutet Auswahl ausstehend, Grau bedeutet Warten, Aufschub oder für heute erledigt, Blau bedeutet dunkler Modus.
+
+Ein Linksklick auf das Taskleistensymbol öffnet die Einstellungen; ein Rechtsklick öffnet das Menü für Designs und Erinnerungen. Auch Ctrl + Alt + Shift + D wechselt das Design. Es erfolgt nie ein automatischer Wechsel, auch nicht morgens.
+
+In den Einstellungen wählen Sie Zeitraum, Wartezeit und Sprache. Sprachänderungen sind bis zum Speichern eine Vorschau. Schließen ohne Speichern stellt die vorige Sprache wieder her. Die Windows-Sprache wird beim Start ermittelt; nicht verfügbare Sprachen werden durch Englisch ersetzt.
+
+NightCue arbeitet lokal ohne Netzwerkzugriffe. Einstellungen liegen neben der Programmdatei. Vor dem Löschen oder Verschieben den Autostart deaktivieren, speichern und das Programm im Symbolmenü beenden.
+
+Öffne den Pfeil neben der Uhr und ziehe NightCue auf die Taskleiste. Du kannst es auch in den Windows-Taskleisteneinstellungen einblenden (Windows 11: andere Taskleistensymbole; Windows 10: Symbole für die Anzeige auf der Taskleiste auswählen). Windows verwaltet die Sichtbarkeit; die App kann sich nicht selbst anheften. Nach der Endzeit schlägt eine goldene Sonne den hellen Modus vor. Das Design ändert sich nie automatisch.</string>
+  <string key="MorningLabel">Nach der Endzeit an den hellen Modus erinnern</string>
+  <string key="LightPending">Zum hellen Modus wechseln, wenn es passt</string>
+  <string key="LightSnoozed">Hinweis auf den hellen Modus bis {0} verschoben</string>
+  <string key="LightDismissed">Bis zum nächsten Beginn keine weiteren Hinweise</string>
+  <string key="HeadingLightPending">Bereit für einen helleren Tag?</string>
+  <string key="HeadingLightDismissed">Ein ruhiger Tag</string>
+  <string key="KeepDark">Bis zum nächsten Beginn dunkel bleiben</string>
+  <string key="RestoreDay">Hinweis auf den hellen Modus wiederherstellen</string>
+  <string key="TrayGuide">Symbol im Infobereich sichtbar halten…</string>
+  <string key="TrayGuideBody">Öffne den Pfeil neben der Uhr und ziehe NightCue auf die Taskleiste. Du kannst es auch in den Windows-Taskleisteneinstellungen einblenden (Windows 11: andere Taskleistensymbole; Windows 10: Symbole für die Anzeige auf der Taskleiste auswählen). Windows verwaltet die Sichtbarkeit; die App kann sich nicht selbst anheften. Nach der Endzeit schlägt eine goldene Sonne den hellen Modus vor. Das Design ändert sich nie automatisch.</string>
+  <string key="TrayHint">Tipp: Ziehe NightCue aus den ausgeblendeten Symbolen neben die Uhr.</string>
+  <string key="StartupRepair">Der Autostart verweist auf einen anderen Ort. Speichern aktualisiert ihn.</string>
+</language>

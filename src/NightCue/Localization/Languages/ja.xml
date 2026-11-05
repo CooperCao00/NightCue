@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language code="ja" name="日本語" font="Yu Gothic UI">
+  <string key="SettingsTitle">NightCue · 設定</string>
+  <string key="HeroTitle">落ち着いたら、
+ダークモードに。</string>
+  <string key="HeroBody">画面の隅に、小さな月。
+急かさず、邪魔せず。</string>
+  <string key="QuietFooter">音なし · 通知なし · 自分のペースで</string>
+  <string key="PageTitle">夜の設定</string>
+  <string key="PageSubtitle">静かな合図で、目の前のことに集中。</string>
+  <string key="LightTitle">ライトモード</string>
+  <string key="DarkTitle">ダークモード</string>
+  <string key="LightIdle">明るく、見やすく</string>
+  <string key="LightActive">使用中 · ライト</string>
+  <string key="DarkIdle">やさしく、落ち着いて</string>
+  <string key="DarkActive">使用中 · ダーク</string>
+  <string key="WindowLabel">リマインダーの時間帯</string>
+  <string key="EveryDay">毎日</string>
+  <string key="Start">開始</string>
+  <string key="End">終了</string>
+  <string key="EndNext">終了 · 翌日</string>
+  <string key="WindowHint">時間になるとアイコンだけが変わります。テーマは自動で変わりません。</string>
+  <string key="SnoozeLabel">再通知までの時間</string>
+  <string key="Minutes">分</string>
+  <string key="StartupLabel">サインイン時に起動</string>
+  <string key="HotkeyLabel">テーマ切替キー</string>
+  <string key="LanguageLabel">言語 / Language</string>
+  <string key="SystemDefault">Windows に合わせる</string>
+  <string key="LanguageHint">言語をプレビュー中です。保存すると設定が適用されます。</string>
+  <string key="More">その他 ···</string>
+  <string key="Save">保存して閉じる</string>
+  <string key="HideHint">閉じてもトレイで動作します</string>
+  <string key="SwitchDark">ダークモードに切り替え</string>
+  <string key="SwitchLight">ライトモードに切り替え</string>
+  <string key="SnoozeMenu">{0} 分後に再通知</string>
+  <string key="KeepLight">今夜はライトモードのまま</string>
+  <string key="Restore">今夜のリマインダーを再開</string>
+  <string key="SettingsMenu">設定…</string>
+  <string key="Help">使い方</string>
+  <string key="Exit">終了</string>
+  <string key="Pending">落ち着いたらダークモードに</string>
+  <string key="Snoozed">{0} まで延期</string>
+  <string key="DarkNight">ダークモード · 今夜の通知は終了</string>
+  <string key="DarkDay">ダークモード · いつでも切り替え可能</string>
+  <string key="Dismissed">今夜はもう通知しません</string>
+  <string key="Starts">{0} からリマインダー開始</string>
+  <string key="HeadingPending">都合のよいときに</string>
+  <string key="HeadingSnoozed">また後で</string>
+  <string key="HeadingDark">ダークモード使用中</string>
+  <string key="HeadingDismissed">今夜は静かに</string>
+  <string key="HeadingDay">静かに待機中</string>
+  <string key="HotkeyOff">ショートカットは無効</string>
+  <string key="HotkeyConflict">他のアプリが使用中です。トレイメニューをご利用ください。</string>
+  <string key="HotkeyConflictShort">ショートカット使用中</string>
+  <string key="InvalidTimes">開始と終了には異なる時刻を24時間形式で入力してください。</string>
+  <string key="InvalidStart">開始時刻を 23:00 のように入力してください。</string>
+  <string key="InvalidEnd">終了時刻を 07:00 のように入力してください。</string>
+  <string key="InvalidSnooze">延期時間は1～120分で指定してください。</string>
+  <string key="ReadFailure">読み書きに失敗しました。アプリの error.log を確認してください。</string>
+  <string key="ThemeFailure">テーマを変更できません。error.log を確認してください。</string>
+  <string key="SaveFailure">設定を保存できません。error.log を確認してください。</string>
+  <string key="StartFailure">NightCue を起動できません。アプリの error.log を確認してください。</string>
+  <string key="MissingResource">設定画面のリソースがありません。</string>
+  <string key="PreviewNotice">プレビューです。システム設定は変更しません。</string>
+  <string key="PreviewValid">入力は有効です。プレビューでは保存しません。</string>
+  <string key="LessMinutes">延期時間を短くする</string>
+  <string key="MoreMinutes">延期時間を長くする</string>
+  <string key="HelpTitle">NightCue · 使い方</string>
+  <string key="HelpBody">トレイアイコンを時計の横に表示してください。琥珀色は選択待ち、灰色は待機・延期・今夜の通知終了、青色はダークモードです。
+
+トレイアイコンを左クリックすると設定が開き、右クリックするとテーマ切替や延期のメニューが開きます。 Ctrl + Alt + Shift + D でも切り替えられます。朝も含め、テーマは自動では変わりません。
+
+設定で時間帯、延期時間、言語を選びます。言語は保存するまでプレビューです。保存せず閉じると元の言語に戻ります。「Windows に合わせる」は起動時の表示言語を使い、未対応の場合は英語になります。
+
+ネットワーク通信は行いません。設定は実行ファイルの横に保存されます。削除や移動の前に自動起動を無効にして保存し、トレイから終了してください。
+
+時計の横の矢印から隠れたアイコンを開き、NightCue をタスクバーへドラッグします。Windows のタスクバー設定でも表示できます（Windows 11：その他のシステムトレイアイコン、Windows 10：タスクバーに表示するアイコンを選択）。表示は Windows が管理するため、アプリ自身では固定できません。終了時刻後は金色の太陽がライトモードを提案します。テーマは自動で変わりません。</string>
+  <string key="MorningLabel">終了時刻後にライトモードを提案</string>
+  <string key="LightPending">準備ができたらライトモードへ</string>
+  <string key="LightSnoozed">ライトモードの通知を {0} まで延期</string>
+  <string key="LightDismissed">次の開始時刻までライトモードの通知なし</string>
+  <string key="HeadingLightPending">明るい一日を始めませんか</string>
+  <string key="HeadingLightDismissed">昼間も静かに</string>
+  <string key="KeepDark">次の開始時刻までダークを維持</string>
+  <string key="RestoreDay">ライトモードの通知を再開</string>
+  <string key="TrayGuide">トレイアイコンを常に表示…</string>
+  <string key="TrayGuideBody">時計の横の矢印から隠れたアイコンを開き、NightCue をタスクバーへドラッグします。Windows のタスクバー設定でも表示できます（Windows 11：その他のシステムトレイアイコン、Windows 10：タスクバーに表示するアイコンを選択）。表示は Windows が管理するため、アプリ自身では固定できません。終了時刻後は金色の太陽がライトモードを提案します。テーマは自動で変わりません。</string>
+  <string key="TrayHint">ヒント：隠れた NightCue アイコンを時計の横へドラッグしてください。</string>
+  <string key="StartupRepair">自動起動が別の場所を参照しています。保存すると現在の場所に更新します。</string>
+</language>

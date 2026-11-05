@@ -43,11 +43,28 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NightCue.cs" />
+    <Compile Include="App\Program.cs" />
+    <Compile Include="Domain\Cue.cs" />
+    <Compile Include="Domain\NightState.cs" />
+    <Compile Include="Domain\Options.cs" />
+    <Compile Include="Domain\Schedule.cs" />
+    <Compile Include="Localization\Localization.cs" />
+    <Compile Include="Persistence\Store.cs" />
+    <Compile Include="Platform\HostWindow.cs" />
+    <Compile Include="Platform\Native.cs" />
+    <Compile Include="Platform\Startup.cs" />
+    <Compile Include="Platform\Theme.cs" />
+    <Compile Include="Platform\WindowChrome.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SettingsForm.cs" />
-    <EmbeddedResource Include="SettingsView.xaml">
+    <Compile Include="Shell\QuietMenuRenderer.cs" />
+    <Compile Include="Shell\SettingsForm.cs" />
+    <Compile Include="Shell\TrayApp.cs" />
+    <Compile Include="Shell\TrayIcon.cs" />
+    <EmbeddedResource Include="Shell\SettingsView.xaml">
       <LogicalName>NightCue.SettingsView.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Languages\*.xml">
+      <LogicalName>NightCue.Languages.%(Filename)%(Extension)</LogicalName>
     </EmbeddedResource>
     <None Include="Assets\NightCue.ico" />
     <None Include="Assets\NightCue.manifest" />

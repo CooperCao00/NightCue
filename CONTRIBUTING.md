@@ -20,7 +20,7 @@ msbuild NightCue.sln /t:Rebuild /p:Configuration=Release /m
 if ($LASTEXITCODE -ne 0) { throw 'Tests failed' }
 ```
 
-`build.ps1` and the solution must include the same source files and embedded XAML. The XAML is loaded at runtime from the resource **NightCue.SettingsView.xaml**; keep its build action as EmbeddedResource, not Page. Run tests after changes. For UI changes, also inspect the app manually on Windows and attach screenshots with personal information removed.
+`build.ps1` and the solution must include the same source files and embedded resources. The direct build reads the project’s explicit C# compile list, while both paths embed every language XML resource. The XAML is loaded at runtime from the resource **NightCue.SettingsView.xaml**; keep its build action as EmbeddedResource, not Page. Run tests after changes. For UI changes, also inspect the app manually on Windows and attach screenshots with personal information removed.
 
 两种构建方式应包含相同源码和资源。XAML 的构建类型是 EmbeddedResource，不能改成 Page。修改后运行测试；涉及界面时，还需在 Windows 上人工检查，并提供去除个人信息的截图。
 
@@ -28,13 +28,18 @@ if ($LASTEXITCODE -ne 0) { throw 'Tests failed' }
 
 | Path | Responsibility |
 | --- | --- |
-| `src/NightCue/NightCue.cs` | Scheduling, local persistence, Windows integration and tray lifecycle |
-| `src/NightCue/SettingsForm.cs` | WPF/WinForms host, input validation, appearance |
-| `src/NightCue/SettingsView.xaml` | Settings layout and original vector illustrations |
+| `src/NightCue/Domain/` | Pure schedule, options, cue types and independent night/day state |
+| `src/NightCue/Persistence/` | Local XML storage and error logging |
+| `src/NightCue/Platform/` | Windows theme, startup, hotkeys, native messages and optional window chrome |
+| `src/NightCue/Shell/` | Tray lifecycle, generated icons, settings host, XAML and menu rendering |
+| `src/NightCue/Localization/` | Language selection, fallback and embedded translation resources |
+| `src/NightCue/App/Program.cs` | Process entry, single instance and application composition |
 | `src/NightCue/Properties/AssemblyInfo.cs` | Assembly identity and version |
 | `tests/NightCue.Tests/Program.cs` | Dependency-free regression runner and UI resource smoke checks |
 | `scripts/check.ps1` | Metadata, project inclusion, and documentation link checks |
 | `scripts/package.ps1` | Build, test, package and SHA-256 generation |
+
+See [ARCHITECTURE.md](docs/ARCHITECTURE.md) for module boundaries and [LOCALIZATION.md](docs/LOCALIZATION.md) for translation and font rules. All modules stay in the same application project and `NightCue` namespace.
 
 Use four spaces in C#, two in XAML/YAML, and follow `.editorconfig`. The direct build uses the .NET Framework compiler, so keep C# syntax compatible with C# 5. Prefer small changes with regression tests for behavior changes. Documentation-only changes need link checks, not new behavior tests.
 

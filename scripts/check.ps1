@@ -46,7 +46,7 @@ foreach ($projectPath in @('src/NightCue/NightCue.csproj', 'tests/NightCue.Tests
     if (Compare-Object $included $actual) { throw "C# file inclusion mismatch: $projectPath" }
 }
 [xml]$mainProject = Get-Content -LiteralPath (Join-Path $repo 'src/NightCue/NightCue.csproj') -Raw
-$embedded = @($mainProject.Project.ItemGroup.EmbeddedResource | Where-Object { $_.Include -eq 'SettingsView.xaml' })
+$embedded = @($mainProject.Project.ItemGroup.EmbeddedResource | Where-Object { $_.Include -eq 'Shell\SettingsView.xaml' })
 if ($embedded.Count -ne 1 -or $embedded[0].LogicalName -ne 'NightCue.SettingsView.xaml') {
     throw 'SettingsView.xaml must retain its embedded resource name.'
 }

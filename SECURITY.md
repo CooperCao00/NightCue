@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Security fixes target the latest published stable release. Older versions do not have a separate backport commitment. This source tree prepares version 1.2.0; publication is a separate step.
+Security fixes target the latest published stable release. Older versions do not have a separate backport commitment. This source tree prepares version 1.3.1; publication is a separate step.
 
 ## Report a vulnerability
 
@@ -18,7 +18,7 @@ NightCue runs as the current user. It changes current-user theme settings only o
 
 ## 中文
 
-安全修复面向最新已发布的稳定版，不承诺向旧版单独回移。当前源码准备的版本是 1.2.0，公开发布是另一步骤。
+安全修复面向最新已发布的稳定版，不承诺向旧版单独回移。当前源码准备的版本是 1.3.1，公开发布是另一步骤。
 
 请优先使用仓库 **Security → Advisories → Report a vulnerability** 私密报告。若该入口未启用，可提交仅请求开放私密渠道的 issue，不要公开漏洞细节、利用步骤或敏感日志。当前未指定安全邮箱，也未承诺固定响应时限。
 

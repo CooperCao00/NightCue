@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language code="fr" name="Français" font="Segoe UI">
+  <string key="SettingsTitle">NightCue · Paramètres</string>
+  <string key="HeroTitle">Le mode sombre,
+à votre rythme.</string>
+  <string key="HeroBody">Une petite lune dans un coin.
+Sans pression ni interruption.</string>
+  <string key="QuietFooter">Sans son ni pop-up · À vous de choisir</string>
+  <string key="PageTitle">Préférences du soir</string>
+  <string key="PageSubtitle">Un rappel discret pour rester concentré.</string>
+  <string key="LightTitle">Mode clair</string>
+  <string key="DarkTitle">Mode sombre</string>
+  <string key="LightIdle">Lumineux et net</string>
+  <string key="LightActive">Actif · Clair</string>
+  <string key="DarkIdle">Doux et apaisant</string>
+  <string key="DarkActive">Actif · Sombre</string>
+  <string key="WindowLabel">Plage de rappel</string>
+  <string key="EveryDay">Chaque jour</string>
+  <string key="Start">Début</string>
+  <string key="End">Fin</string>
+  <string key="EndNext">Fin · lendemain</string>
+  <string key="WindowHint">Seul le repère change. Le thème reste sous votre contrôle.</string>
+  <string key="SnoozeLabel">Reporter de</string>
+  <string key="Minutes">min</string>
+  <string key="StartupLabel">Lancer à la connexion</string>
+  <string key="HotkeyLabel">Raccourci du thème</string>
+  <string key="LanguageLabel">Langue / Language</string>
+  <string key="SystemDefault">Suivre Windows</string>
+  <string key="LanguageHint">Aperçu de la langue · Enregistrez votre choix.</string>
+  <string key="More">Plus ···</string>
+  <string key="Save">Enregistrer et masquer</string>
+  <string key="HideHint">Reste actif dans la zone de notification</string>
+  <string key="SwitchDark">Passer en mode sombre</string>
+  <string key="SwitchLight">Passer en mode clair</string>
+  <string key="SnoozeMenu">Me rappeler dans {0} min</string>
+  <string key="KeepLight">Garder le mode clair ce soir</string>
+  <string key="Restore">Rétablir le rappel de ce soir</string>
+  <string key="SettingsMenu">Paramètres…</string>
+  <string key="Help">Aide rapide</string>
+  <string key="Exit">Quitter</string>
+  <string key="Pending">Passez au sombre quand vous voulez</string>
+  <string key="Snoozed">Reporté à {0}</string>
+  <string key="DarkNight">Sombre · Plus de rappel ce soir</string>
+  <string key="DarkDay">Sombre · Changez quand vous voulez</string>
+  <string key="Dismissed">Plus de rappel ce soir</string>
+  <string key="Starts">Rappels à partir de {0}</string>
+  <string key="HeadingPending">À votre rythme</string>
+  <string key="HeadingSnoozed">À plus tard</string>
+  <string key="HeadingDark">Mode sombre activé</string>
+  <string key="HeadingDismissed">Une soirée tranquille</string>
+  <string key="HeadingDay">En attente discrète</string>
+  <string key="HotkeyOff">Raccourci désactivé</string>
+  <string key="HotkeyConflict">Raccourci utilisé ailleurs. Utilisez le menu de l’icône.</string>
+  <string key="HotkeyConflictShort">Raccourci indisponible</string>
+  <string key="InvalidTimes">Saisissez deux heures différentes au format 24 heures.</string>
+  <string key="InvalidStart">Saisissez une heure de début, par exemple 23:00.</string>
+  <string key="InvalidEnd">Saisissez une heure de fin, par exemple 07:00.</string>
+  <string key="InvalidSnooze">Le report doit être compris entre 1 et 120 minutes.</string>
+  <string key="ReadFailure">Lecture ou enregistrement impossible. Consultez error.log.</string>
+  <string key="ThemeFailure">Impossible de changer le thème. Consultez error.log.</string>
+  <string key="SaveFailure">Impossible d’enregistrer les paramètres. Consultez error.log.</string>
+  <string key="StartFailure">NightCue n’a pas pu démarrer. Consultez error.log.</string>
+  <string key="MissingResource">La vue des paramètres est introuvable.</string>
+  <string key="PreviewNotice">Aperçu uniquement. Aucun paramètre système ne sera modifié.</string>
+  <string key="PreviewValid">Paramètres valides. L’aperçu n’enregistre rien.</string>
+  <string key="LessMinutes">Réduire le délai</string>
+  <string key="MoreMinutes">Augmenter le délai</string>
+  <string key="HelpTitle">NightCue · Aide rapide</string>
+  <string key="HelpBody">Affichez l’icône près de l’horloge. Ambre : choix en attente ; gris : attente, report ou rappel terminé ; bleu : mode sombre.
+
+Un clic gauche sur l’icône ouvre les paramètres ; un clic droit ouvre le menu des thèmes et des rappels. Ctrl + Alt + Shift + D change aussi le thème. Aucun changement n’est automatique, même le matin.
+
+Les paramètres règlent les horaires, le délai et la langue. La langue reste en aperçu jusqu’à l’enregistrement. Fermer sans enregistrer rétablit la langue précédente. Suivre Windows utilise la langue d’affichage au démarrage, ou l’anglais si elle n’est pas disponible.
+
+NightCue fonctionne localement, sans réseau. Les réglages sont enregistrés près du programme. Avant de supprimer ou déplacer le dossier, désactivez le lancement à la connexion, enregistrez, puis quittez par le menu de l’icône.
+
+Ouvrez la flèche près de l’horloge et faites glisser NightCue vers la barre des tâches. Vous pouvez aussi l’afficher dans les paramètres Windows de la barre des tâches (Windows 11 : autres icônes de la barre d’état système ; Windows 10 : sélectionner les icônes à afficher). Windows gère cette visibilité ; l’application ne peut pas s’épingler elle-même. Après l’heure de fin, un soleil doré propose le mode clair. Le thème ne change jamais automatiquement.</string>
+  <string key="MorningLabel">Proposer le mode clair après l’heure de fin</string>
+  <string key="LightPending">Passez au mode clair quand vous le souhaitez</string>
+  <string key="LightSnoozed">Rappel du mode clair reporté à {0}</string>
+  <string key="LightDismissed">Plus de rappels du mode clair pour cette période</string>
+  <string key="HeadingLightPending">Prêt pour une journée plus claire ?</string>
+  <string key="HeadingLightDismissed">Une journée tranquille</string>
+  <string key="KeepDark">Rester en mode sombre pour cette période</string>
+  <string key="RestoreDay">Rétablir le rappel du mode clair</string>
+  <string key="TrayGuide">Garder l’icône visible…</string>
+  <string key="TrayGuideBody">Ouvrez la flèche près de l’horloge et faites glisser NightCue vers la barre des tâches. Vous pouvez aussi l’afficher dans les paramètres Windows de la barre des tâches (Windows 11 : autres icônes de la barre d’état système ; Windows 10 : sélectionner les icônes à afficher). Windows gère cette visibilité ; l’application ne peut pas s’épingler elle-même. Après l’heure de fin, un soleil doré propose le mode clair. Le thème ne change jamais automatiquement.</string>
+  <string key="TrayHint">Astuce : faites glisser NightCue des icônes masquées vers l’horloge.</string>
+  <string key="StartupRepair">Le démarrage pointe ailleurs. Enregistrez pour utiliser cette copie.</string>
+</language>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language code="en" name="English" font="Segoe UI">
+  <string key="SettingsTitle">NightCue · Settings</string>
+  <string key="HeroTitle">Dark mode,
+when you're ready.</string>
+  <string key="HeroBody">A little moon in the corner.
+No rush. No interruptions.</string>
+  <string key="QuietFooter">No sound · No pop-ups · Your choice</string>
+  <string key="PageTitle">Evening preferences</string>
+  <string key="PageSubtitle">Set a quiet cue. Stay with what matters.</string>
+  <string key="LightTitle">Light mode</string>
+  <string key="DarkTitle">Dark mode</string>
+  <string key="LightIdle">Bright and clear</string>
+  <string key="LightActive">Active · Light</string>
+  <string key="DarkIdle">Soft and calm</string>
+  <string key="DarkActive">Active · Dark</string>
+  <string key="WindowLabel">Reminder window</string>
+  <string key="EveryDay">Every day</string>
+  <string key="Start">Start</string>
+  <string key="End">End</string>
+  <string key="EndNext">End · next day</string>
+  <string key="WindowHint">Only the tray cue changes. Your theme stays under your control.</string>
+  <string key="SnoozeLabel">Snooze duration</string>
+  <string key="Minutes">min</string>
+  <string key="StartupLabel">Run at sign-in</string>
+  <string key="HotkeyLabel">Theme shortcut</string>
+  <string key="LanguageLabel">Language</string>
+  <string key="SystemDefault">Follow Windows</string>
+  <string key="LanguageHint">Language preview · Save to keep your choice.</string>
+  <string key="More">More ···</string>
+  <string key="Save">Save &amp; hide</string>
+  <string key="HideHint">Keeps running in the tray</string>
+  <string key="SwitchDark">Switch to dark mode</string>
+  <string key="SwitchLight">Switch to light mode</string>
+  <string key="SnoozeMenu">Remind me in {0} min</string>
+  <string key="KeepLight">Keep light tonight</string>
+  <string key="Restore">Restore tonight's cue</string>
+  <string key="SettingsMenu">Settings…</string>
+  <string key="Help">Quick help</string>
+  <string key="Exit">Exit</string>
+  <string key="Pending">Switch to dark when you're ready</string>
+  <string key="Snoozed">Snoozed until {0}</string>
+  <string key="DarkNight">Dark mode · No more cues tonight</string>
+  <string key="DarkDay">Dark mode · Switch back whenever you like</string>
+  <string key="Dismissed">No more cues tonight</string>
+  <string key="Starts">Reminders start at {0}</string>
+  <string key="HeadingPending">Whenever you're ready</string>
+  <string key="HeadingSnoozed">See you later</string>
+  <string key="HeadingDark">Dark mode is on</string>
+  <string key="HeadingDismissed">A quiet evening</string>
+  <string key="HeadingDay">Quietly waiting</string>
+  <string key="HotkeyOff">Shortcut is off</string>
+  <string key="HotkeyConflict">Shortcut is used by another app. Use the tray menu.</string>
+  <string key="HotkeyConflictShort">Shortcut unavailable</string>
+  <string key="InvalidTimes">Use different start and end times in 24-hour format.</string>
+  <string key="InvalidStart">Enter a start time such as 23:00.</string>
+  <string key="InvalidEnd">Enter an end time such as 07:00.</string>
+  <string key="InvalidSnooze">Snooze must be between 1 and 120 minutes.</string>
+  <string key="ReadFailure">Cannot read or save data. See error.log in the app folder.</string>
+  <string key="ThemeFailure">Could not change the theme. See error.log.</string>
+  <string key="SaveFailure">Could not save settings. See error.log.</string>
+  <string key="StartFailure">NightCue could not start. See error.log in the app folder.</string>
+  <string key="MissingResource">The settings view is missing.</string>
+  <string key="PreviewNotice">Preview only. No system settings will change.</string>
+  <string key="PreviewValid">Settings are valid. Preview does not save changes.</string>
+  <string key="LessMinutes">Decrease snooze duration</string>
+  <string key="MoreMinutes">Increase snooze duration</string>
+  <string key="HelpTitle">NightCue · Quick help</string>
+  <string key="HelpBody">Keep the tray icon visible beside the clock. Amber means a choice is pending; gray means waiting, snoozed or dismissed; blue means dark mode.
+
+Left-click the tray icon to open Settings; right-click for theme, snooze and reminder actions. Ctrl + Alt + Shift + D also switches themes. Themes never change automatically, including in the morning.
+
+Settings lets you choose a time window, snooze delay and language. Language changes are previews until you save; closing without saving restores the previous language. Follow Windows uses the system display language at startup, with English as fallback.
+
+NightCue runs locally, without network requests. Settings and state are stored beside the executable. Before uninstalling or moving it, disable sign-in startup, save, and exit from the tray menu. Then delete or move the folder.
+
+Open the hidden-icons arrow beside the clock and drag NightCue onto the taskbar. You can also enable NightCue in Windows taskbar settings (Windows 11: other system tray icons; Windows 10: select which icons appear on the taskbar). Windows controls icon visibility; NightCue cannot pin itself. A gold sun offers light mode after the end time. It never switches themes automatically.</string>
+  <string key="MorningLabel">Offer light mode after the end time</string>
+  <string key="LightPending">Switch to light when you're ready</string>
+  <string key="LightSnoozed">Light-mode cue snoozed until {0}</string>
+  <string key="LightDismissed">No more light-mode cues this period</string>
+  <string key="HeadingLightPending">Ready for a lighter day?</string>
+  <string key="HeadingLightDismissed">A quiet day</string>
+  <string key="KeepDark">Keep dark this period</string>
+  <string key="RestoreDay">Restore light-mode cue</string>
+  <string key="TrayGuide">Keep the tray icon visible…</string>
+  <string key="TrayGuideBody">Open the hidden-icons arrow beside the clock and drag NightCue onto the taskbar. You can also enable NightCue in Windows taskbar settings (Windows 11: other system tray icons; Windows 10: select which icons appear on the taskbar). Windows controls icon visibility; NightCue cannot pin itself. A gold sun offers light mode after the end time. It never switches themes automatically.</string>
+  <string key="TrayHint">Tip: drag NightCue from the hidden-icons menu to beside the clock.</string>
+  <string key="StartupRepair">Startup points to another location. Save to use this copy.</string>
+</language>
