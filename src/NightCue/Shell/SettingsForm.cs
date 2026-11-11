@@ -11,13 +11,32 @@ using B = System.Windows.Controls.Primitives;
 
 namespace NightCue
 {
+    public interface ISettingsActions
+    {
+        bool ApplyOptions(Options next);
+        bool SetStartup(bool enabled);
+        StartupRegistration StartupState { get; }
+        bool HotkeyEnabled { get; }
+        bool HotkeyAvailable { get; }
+        string Warning { get; }
+        Cue CurrentCue { get; }
+        string StatusText();
+        void ChangeTheme(bool dark);
+        void OpenMenuAt(Point point);
+    }
+
     public class SettingsForm : Form
     {
-        readonly TrayApp app;
+        readonly ISettingsActions app;
         readonly bool preview;
         readonly string originalLanguage;
-        bool previewDark, saved, disposed, changingLanguage;
+        bool previewDark, disposed, changingLanguage, initializing = true, updatingControls, closing;
+        Options committed;
+        readonly Timer feedbackTimer = new Timer { Interval = 2200 };
+        readonly System.Collections.Generic.HashSet<string> saveErrors = new System.Collections.Generic.HashSet<string>();
+        string feedbackKey = "AutoSaveHint", timeError = "", minutesError = "";
         bool? lastDark;
+        StartupRegistration startupRegistration;
         readonly W.FrameworkElement view, scene;
         readonly C.TextBox start, end, minutes;
         readonly B.ToggleButton startup, hotkey, morning;
@@ -27,14 +46,15 @@ namespace NightCue
         readonly LanguageInfo systemChoice;
         string warning = "";
         public W.FrameworkElement View { get { return view; } }
-        public SettingsForm(TrayApp owner, Options options, Icon icon) : this(owner, options, icon, false, false) { }
+        public SettingsForm(ISettingsActions owner, Options options, Icon icon) : this(owner, options, icon, false, false) { }
 
-        public SettingsForm(TrayApp owner, Options options, Icon icon, bool isPreview, bool darkPreview)
+        public SettingsForm(ISettingsActions owner, Options options, Icon icon, bool isPreview, bool darkPreview)
         {
             app = owner;
             preview = isPreview;
             previewDark = darkPreview;
             originalLanguage = options.Language;
+            committed = options.Copy();
             L.Select(options.Language);
             Icon = icon;
             AutoScaleMode = AutoScaleMode.None;
@@ -61,8 +81,34 @@ namespace NightCue
             light = Find<C.Button>("LightButton"); dark = Find<C.Button>("DarkButton");
             language = Find<C.ComboBox>("LanguageChoice");
             start.Text = options.Start; end.Text = options.End; minutes.Text = options.SnoozeMinutes.ToString();
-            startup.IsChecked = !preview && Startup.Registered; hotkey.IsChecked = options.Hotkey;
+            startupRegistration = preview ? StartupRegistration.Unregistered : app.StartupState;
+            SetStartupControl();
+            hotkey.IsChecked = options.Hotkey;
             morning.IsChecked = options.MorningReminder;
+            startup.Checked += delegate { ChangeStartup(startup.IsChecked == true); };
+            startup.Unchecked += delegate { ChangeStartup(startup.IsChecked == true); };
+            hotkey.Checked += delegate { ChangeToggle("Hotkey", hotkey.IsChecked == true); };
+            hotkey.Unchecked += delegate { ChangeToggle("Hotkey", hotkey.IsChecked == true); };
+            morning.Checked += delegate { ChangeToggle("Morning", morning.IsChecked == true); };
+            morning.Unchecked += delegate { ChangeToggle("Morning", morning.IsChecked == true); };
+            Find<C.Button>("StartupWindowsButton").Click += delegate
+            {
+                if (startupRegistration == StartupRegistration.DifferentPath) ChangeStartup(true);
+                else OpenLocation("ms-settings:startupapps");
+            };
+            Find<C.Button>("DiagnosticsButton").Click += delegate { OpenLocation(Store.DiagnosticDirectory); };
+            Find<C.Button>("RecoveryDismissButton").Click += delegate
+            {
+                if (preview) { feedback.Text = L.Text("PreviewNotice"); return; }
+                Store.AcknowledgeRecovery();
+                UpdateRecoveryNotice();
+            };
+            Activated += delegate
+            {
+                if (!preview) startupRegistration = app.StartupState;
+                SetStartupControl();
+                UpdateStartupStatus();
+            };
 
             systemChoice = new LanguageInfo { Code = "system", Name = L.Text("SystemDefault") };
             language.DisplayMemberPath = "Name";
@@ -74,17 +120,23 @@ namespace NightCue
                 ? "system" : L.Resolve(options.Language, "en");
             language.SelectionChanged += delegate(object sender, C.SelectionChangedEventArgs args)
             {
-                if (changingLanguage || args.AddedItems.Count == 0) return;
+                if (initializing || updatingControls || changingLanguage || args.AddedItems.Count == 0) return;
                 LanguageInfo selected = args.AddedItems[0] as LanguageInfo;
-                if (selected == null) return;
-                L.Select(selected.Code);
-                feedback.Text = L.Text("LanguageHint");
+                if (selected == null || selected.Code == committed.Language) return;
+                Options next = committed.Copy();
+                next.Language = selected.Code;
+                if (!ApplyEdit(next, "Language"))
+                {
+                    updatingControls = true;
+                    try { language.SelectedValue = String.Equals(committed.Language, "system", StringComparison.OrdinalIgnoreCase) ? "system" : L.Resolve(committed.Language, "en"); }
+                    finally { updatingControls = false; }
+                }
             };
             light.Click += delegate { SetTheme(false); };
             dark.Click += delegate { SetTheme(true); };
             Find<C.Button>("Minus").Click += delegate { Step(-1); };
             Find<C.Button>("Plus").Click += delegate { Step(1); };
-            Find<C.Button>("SaveButton").Click += delegate { Save(); };
+            Find<C.Button>("HideButton").Click += delegate { Close(); };
             C.Button more = Find<C.Button>("MoreButton");
             more.Click += delegate
             {
@@ -92,17 +144,46 @@ namespace NightCue
                 W.Point point = more.PointToScreen(new W.Point(0, more.ActualHeight + 6));
                 app.OpenMenuAt(new Point((int)point.X, (int)point.Y));
             };
-            start.TextChanged += delegate { UpdateEndLabel(); feedback.Text = warning; };
-            end.TextChanged += delegate { UpdateEndLabel(); feedback.Text = warning; };
-            minutes.TextChanged += delegate { feedback.Text = warning; };
+            start.TextChanged += delegate { timeError = ""; UpdateEndLabel(); RenderEditFeedback(); };
+            end.TextChanged += delegate { timeError = ""; UpdateEndLabel(); RenderEditFeedback(); };
+            minutes.TextChanged += delegate { minutesError = ""; RenderEditFeedback(); };
+            W.FrameworkElement timeGroup = Find<W.FrameworkElement>("TimeGroup");
+            timeGroup.LostKeyboardFocus += delegate
+            {
+                view.Dispatcher.BeginInvoke(new Action(delegate
+                {
+                    if (!disposed && !closing && !timeGroup.IsKeyboardFocusWithin) CommitTimes();
+                }));
+            };
+            minutes.LostKeyboardFocus += delegate { if (!closing) CommitMinutes(); };
             view.PreviewKeyDown += delegate(object sender, System.Windows.Input.KeyEventArgs args)
             {
-                // The first Escape closes an open language list; the next closes settings.
+                if (args.Key == System.Windows.Input.Key.Enter)
+                {
+                    if (timeGroup.IsKeyboardFocusWithin) { CommitTimes(); args.Handled = true; }
+                    else if (minutes.IsKeyboardFocusWithin) { CommitMinutes(); args.Handled = true; }
+                }
                 if (args.Key == System.Windows.Input.Key.Escape && !language.IsDropDownOpen)
                 { Close(); args.Handled = true; }
             };
-            Shown += delegate { ApplyChrome(); Find<C.Button>("SaveButton").Focus(); };
+            FormClosing += delegate(object sender, FormClosingEventArgs args)
+            {
+                closing = true;
+                bool timesAccepted = CommitTimes(), minutesAccepted = CommitMinutes();
+                // Incomplete drafts may be dismissed. A valid edit that could not
+                // be persisted stays visible so the user can correct or retry it.
+                bool saveFailed = (!timesAccepted && timeError.Length == 0 && saveErrors.Contains("Time")) ||
+                    (!minutesAccepted && minutesError.Length == 0 && saveErrors.Contains("Minutes"));
+                if (saveFailed && args.CloseReason != CloseReason.WindowsShutDown && args.CloseReason != CloseReason.ApplicationExitCall)
+                {
+                    args.Cancel = true;
+                    closing = false;
+                }
+            };
+            Shown += delegate { ApplyChrome(); Find<C.Button>("HideButton").Focus(); };
+            feedbackTimer.Tick += delegate { feedbackTimer.Stop(); feedbackKey = "AutoSaveHint"; RenderEditFeedback(); };
             L.Changed += ApplyLanguage;
+            initializing = false;
             ApplyLanguage();
         }
 
@@ -121,12 +202,135 @@ namespace NightCue
                 Text = L.Text("SettingsTitle");
                 systemChoice.Name = L.Text("SystemDefault");
                 language.Items.Refresh();
-                feedback.Text = !preview && Startup.NeedsRepair ? L.Text("StartupRepair") : L.Text("TrayHint");
+                RenderEditFeedback();
+                UpdateStartupStatus();
+                UpdateRecoveryNotice();
                 lastDark = null;
                 UpdateEndLabel();
                 UpdateStatus();
             }
             finally { changingLanguage = false; }
+        }
+
+        void SetStartupControl()
+        {
+            updatingControls = true;
+            try
+            {
+                startup.IsEnabled = startupRegistration != StartupRegistration.Unavailable;
+                startup.IsChecked = startupRegistration == StartupRegistration.CurrentPath || startupRegistration == StartupRegistration.DifferentPath;
+            }
+            finally { updatingControls = false; }
+        }
+        void UpdateStartupStatus()
+        {
+            string key = startupRegistration == StartupRegistration.Unavailable ? "StartupUnknown" :
+                startupRegistration == StartupRegistration.CurrentPath ? "StartupRegistered" :
+                startupRegistration == StartupRegistration.DifferentPath ? "StartupRepair" : "StartupUnregistered";
+            Find<C.TextBlock>("StartupStatus").Text = L.Text(key);
+            Find<C.TextBlock>("StartupStatus").ToolTip = saveErrors.Contains("Startup") ? L.Text("StartupUpdateFailed") : null;
+            Find<C.TextBlock>("StartupStatus").Foreground = saveErrors.Contains("Startup") ? Brush("#DB866E") : (M.Brush)scene.Resources["Muted"];
+            Find<C.Button>("StartupWindowsButton").Content = L.Text(startupRegistration == StartupRegistration.DifferentPath ? "RepairStartup" : "StartupWindows");
+        }
+        void ChangeStartup(bool enabled)
+        {
+            if (initializing || updatingControls) return;
+            bool success = preview || app.SetStartup(enabled);
+            if (success)
+            {
+                startupRegistration = preview ? (enabled ? StartupRegistration.CurrentPath : StartupRegistration.Unregistered) : app.StartupState;
+                saveErrors.Remove("Startup");
+                ShowSaved();
+            }
+            else
+            {
+                startupRegistration = app.StartupState;
+                saveErrors.Add("Startup");
+                RenderEditFeedback();
+            }
+            SetStartupControl();
+            UpdateStartupStatus();
+        }
+        void ChangeToggle(string field, bool enabled)
+        {
+            if (initializing || updatingControls) return;
+            Options next = committed.Copy();
+            if (field == "Hotkey") next.Hotkey = enabled;
+            else next.MorningReminder = enabled;
+            if (!ApplyEdit(next, field))
+            {
+                updatingControls = true;
+                try
+                {
+                    if (field == "Hotkey") hotkey.IsChecked = committed.Hotkey;
+                    else morning.IsChecked = committed.MorningReminder;
+                }
+                finally { updatingControls = false; }
+            }
+            UpdateStatus();
+        }
+        bool ApplyEdit(Options next, string field)
+        {
+            if (!preview && !app.ApplyOptions(next))
+            {
+                saveErrors.Add(field);
+                RenderEditFeedback();
+                return false;
+            }
+            committed = next.Copy();
+            saveErrors.Remove(field);
+            if (preview) L.Select(committed.Language);
+            ShowSaved();
+            UpdateStatus();
+            return true;
+        }
+        void ShowSaved()
+        {
+            feedbackKey = "Saved";
+            feedbackTimer.Stop();
+            feedbackTimer.Start();
+            RenderEditFeedback();
+        }
+        void RenderEditFeedback()
+        {
+            if (initializing) return;
+            feedback.Text = saveErrors.Count > 0 ? L.Text(saveErrors.Count == 1 && saveErrors.Contains("Startup") ? "StartupUpdateFailed" : "SaveFailed") : warning.Length > 0 ? warning : L.Text(feedbackKey);
+            feedback.Foreground = saveErrors.Count > 0 || warning.Length > 0 ? Brush("#DB866E") : (M.Brush)scene.Resources["Muted"];
+            Find<C.TextBlock>("TimeFeedback").Text = L.Text(timeError.Length > 0 ? timeError : saveErrors.Contains("Time") ? "SaveFailed" : "TimeHint");
+            Find<C.TextBlock>("TimeFeedback").Foreground = timeError.Length > 0 || saveErrors.Contains("Time") ? Brush("#DB866E") : (M.Brush)scene.Resources["Muted"];
+            SetRowFeedback("Minutes", minutesError.Length > 0 ? minutesError : saveErrors.Contains("Minutes") ? "SaveFailedShort" : "");
+            foreach (string field in new[] { "Language", "Morning", "Hotkey" })
+                SetRowFeedback(field, saveErrors.Contains(field) ? "SaveFailedShort" : "");
+        }
+        void SetRowFeedback(string field, string key)
+        {
+            C.TextBlock text = Find<C.TextBlock>(field + "Feedback");
+            text.Text = key.Length == 0 ? "" : L.Text(key);
+            text.Visibility = key.Length == 0 ? W.Visibility.Collapsed : W.Visibility.Visible;
+            text.ToolTip = saveErrors.Contains(field) ? L.Text("SaveFailed") : text.Text;
+        }
+        void UpdateRecoveryNotice()
+        {
+            bool recovered = Store.RecoveryNotice;
+            C.TextBlock body = Find<C.TextBlock>("HeroBody");
+            body.Text = L.Text(recovered ? "RecoveryNotice" : "HeroBody");
+            body.FontSize = recovered ? 12 : 13;
+            body.LineHeight = recovered ? 19 : 24;
+            Find<C.Button>("RecoveryDismissButton").Visibility = recovered ? W.Visibility.Visible : W.Visibility.Collapsed;
+        }
+        void OpenLocation(string location)
+        {
+            if (preview) { feedback.Text = L.Text("PreviewNotice"); return; }
+            try
+            {
+                if (location == Store.DiagnosticDirectory) Directory.CreateDirectory(location);
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(location) { UseShellExecute = true });
+            }
+            catch (Exception e)
+            {
+                Store.Log(e);
+                feedback.Text = L.Format("StartupOpenFailed", location);
+            }
         }
 
         void SetTheme(bool value)
@@ -137,8 +341,9 @@ namespace NightCue
         void Step(int delta)
         {
             int value;
-            if (!Int32.TryParse(minutes.Text, out value)) value = 15;
+            if (!Int32.TryParse(minutes.Text, out value) || value < 1 || value > 120) value = committed.SnoozeMinutes;
             minutes.Text = Math.Max(1, Math.Min(120, value + delta)).ToString();
+            CommitMinutes();
         }
         static bool ParseTime(string text, out TimeSpan value)
         {
@@ -149,22 +354,50 @@ namespace NightCue
             TimeSpan first, last;
             Find<C.TextBlock>("EndLabel").Text = L.Text(ParseTime(start.Text, out first) && ParseTime(end.Text, out last) && last < first ? "EndNext" : "End");
         }
-        void Save()
+        bool CommitTimes()
         {
-            TimeSpan first, last; int duration;
-            if (!ParseTime(start.Text, out first)) { feedback.Text = L.Text("InvalidStart"); start.Focus(); return; }
-            if (!ParseTime(end.Text, out last)) { feedback.Text = L.Text("InvalidEnd"); end.Focus(); return; }
-            if (first == last) { feedback.Text = L.Text("InvalidTimes"); end.Focus(); return; }
-            if (!Int32.TryParse(minutes.Text, out duration) || duration < 1 || duration > 120)
-            { feedback.Text = L.Text("InvalidSnooze"); minutes.Focus(); return; }
-            var next = new Options
+            TimeSpan first, last;
+            if (!ParseTime(start.Text, out first)) timeError = "InvalidStart";
+            else if (!ParseTime(end.Text, out last)) timeError = "InvalidEnd";
+            else if (first == last) timeError = "InvalidTimes";
+            else
             {
-                Start = first.ToString(@"hh\:mm"), End = last.ToString(@"hh\:mm"),
-                SnoozeMinutes = duration, Hotkey = hotkey.IsChecked == true, MorningReminder = morning.IsChecked == true,
-                Language = language.SelectedItem == null ? "system" : ((LanguageInfo)language.SelectedItem).Code
-            };
-            if (preview) { feedback.Text = L.Text("PreviewValid"); return; }
-            if (app.ApplyOptions(next, startup.IsChecked == true)) { saved = true; Close(); }
+                timeError = "";
+                Options next = committed.Copy();
+                next.Start = first.ToString(@"hh\:mm");
+                next.End = last.ToString(@"hh\:mm");
+                if (next.Start == committed.Start && next.End == committed.End)
+                {
+                    saveErrors.Remove("Time");
+                    start.Text = next.Start; end.Text = next.End;
+                    RenderEditFeedback();
+                    return true;
+                }
+                if (!ApplyEdit(next, "Time")) return false;
+                start.Text = next.Start; end.Text = next.End;
+                return true;
+            }
+            RenderEditFeedback();
+            return false;
+        }
+        bool CommitMinutes()
+        {
+            int duration;
+            if (!Int32.TryParse(minutes.Text, out duration) || duration < 1 || duration > 120)
+            { minutesError = "InvalidSnooze"; RenderEditFeedback(); return false; }
+            minutesError = "";
+            if (duration == committed.SnoozeMinutes)
+            {
+                saveErrors.Remove("Minutes");
+                minutes.Text = duration.ToString();
+                RenderEditFeedback();
+                return true;
+            }
+            Options next = committed.Copy();
+            next.SnoozeMinutes = duration;
+            if (!ApplyEdit(next, "Minutes")) return false;
+            minutes.Text = duration.ToString();
+            return true;
         }
 
         void ApplyPalette(bool isDark)
@@ -194,8 +427,9 @@ namespace NightCue
             Cue current = preview ? (isDark ? Cue.Dark : Cue.Pending) : app.CurrentCue;
             status.Text = preview ? L.Status(current, start.Text, DateTime.MinValue, true) : app.StatusText();
             warning = preview ? "" : app.Warning;
-            if (warning.Length > 0) feedback.Text = warning;
             ApplyPalette(isDark);
+            RenderEditFeedback();
+            UpdateStartupStatus();
             heading.Text = L.Heading(current);
             M.SolidColorBrush accent = Brush(isDark ? "#B5B3F1" : "#E8C58D");
             heading.Foreground = accent; Find<System.Windows.Shapes.Ellipse>("StatusDot").Fill = accent;
@@ -206,10 +440,10 @@ namespace NightCue
         }
         protected override void Dispose(bool disposing)
         {
-            bool restoreLanguage = disposing && !disposed && !saved;
-            if (disposing && !disposed) { disposed = true; L.Changed -= ApplyLanguage; }
+            bool restoreLanguage = disposing && !disposed && preview;
+            if (disposing && !disposed) { disposed = true; L.Changed -= ApplyLanguage; feedbackTimer.Stop(); feedbackTimer.Dispose(); }
             base.Dispose(disposing);
-            // Preview and real settings follow the same cancellation semantics.
+            // Preview rendering must not change the global language outside its lifetime.
             if (restoreLanguage) L.Select(originalLanguage);
         }
     }

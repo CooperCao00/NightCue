@@ -30,6 +30,8 @@ namespace NightCue
         }
     }
 
+    public enum StartupRegistration { Unregistered, CurrentPath, DifferentPath, Unavailable }
+
     public static class Startup
     {
         static readonly IStartupStore registry = new RegistryStartupStore();
@@ -37,13 +39,31 @@ namespace NightCue
         {
             if (String.IsNullOrWhiteSpace(executable) || executable.IndexOf('"') >= 0)
                 throw new ArgumentException("Invalid executable path.", "executable");
-            return "\"" + executable + "\" --background";
+            string command = "\"" + executable + "\" --background";
+            return command;
         }
         public static string Command { get { return BuildCommand(Application.ExecutablePath); } }
+        // Registration is not Windows approval or proof of a successful sign-in launch.
+        public static StartupRegistration Registration { get { return Inspect(registry, Command); } }
+        public static StartupRegistration Inspect(IStartupStore store, string command)
+        {
+            try
+            {
+                string value = store.Read();
+                return String.IsNullOrEmpty(value) ? StartupRegistration.Unregistered :
+                    String.Equals(value, command, StringComparison.OrdinalIgnoreCase) ?
+                    StartupRegistration.CurrentPath : StartupRegistration.DifferentPath;
+            }
+            catch (Exception e)
+            {
+                Store.Log(e);
+                return StartupRegistration.Unavailable;
+            }
+        }
         public static bool Registered { get { return !String.IsNullOrEmpty(registry.Read()); } }
         public static bool Enabled { get { return String.Equals(registry.Read(), Command, StringComparison.OrdinalIgnoreCase); } }
         public static bool NeedsRepair { get { return Registered && !Enabled; } }
-        public static void Set(bool enabled) { registry.Write(enabled ? Command : null); }
+        public static void Set(bool enabled) { SaveSettings(enabled, delegate { }); }
 
         public static void SaveSettings(bool enabled, Action save)
         {
@@ -51,6 +71,7 @@ namespace NightCue
         }
         public static void SaveSettings(IStartupStore store, string command, Action save)
         {
+            if (command != null && command.Length > 260) throw new ArgumentException("Startup command exceeds the Windows Run limit.", "command");
             string previous = store.Read();
             try
             {

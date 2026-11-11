@@ -26,9 +26,9 @@ Sem pressa ou interrupções.</string>
   <string key="HotkeyLabel">Atalho de tema</string>
   <string key="LanguageLabel">Idioma / Language</string>
   <string key="SystemDefault">Seguir o Windows</string>
-  <string key="LanguageHint">Prévia do idioma. Salve para manter a escolha.</string>
+  <string key="LanguageHint">As mudanças de idioma são salvas automaticamente.</string>
   <string key="More">Mais ···</string>
-  <string key="Save">Salvar e ocultar</string>
+  <string key="Save">Ocultar na bandeja</string>
   <string key="HideHint">Continua na bandeja do sistema</string>
   <string key="SwitchDark">Mudar para o modo escuro</string>
   <string key="SwitchLight">Mudar para o modo claro</string>
@@ -56,10 +56,10 @@ Sem pressa ou interrupções.</string>
   <string key="InvalidStart">Informe o início no formato 23:00.</string>
   <string key="InvalidEnd">Informe o fim no formato 07:00.</string>
   <string key="InvalidSnooze">O adiamento deve ser de 1 a 120 minutos.</string>
-  <string key="ReadFailure">Falha ao ler ou salvar dados. Consulte error.log.</string>
-  <string key="ThemeFailure">Não foi possível mudar o tema. Consulte error.log.</string>
-  <string key="SaveFailure">Não foi possível salvar as configurações. Consulte error.log.</string>
-  <string key="StartFailure">Não foi possível iniciar o NightCue. Consulte error.log.</string>
+  <string key="ReadFailure">Não foi possível ler ou salvar dados. Consulte os diagnósticos.</string>
+  <string key="ThemeFailure">Não foi possível mudar o tema. Consulte os diagnósticos.</string>
+  <string key="SaveFailure">Não foi possível salvar as configurações. Consulte os diagnósticos.</string>
+  <string key="StartFailure">Não foi possível iniciar o NightCue. Consulte os diagnósticos.</string>
   <string key="MissingResource">A tela de configurações não foi encontrada.</string>
   <string key="PreviewNotice">Apenas prévia. Nenhuma configuração do sistema será alterada.</string>
   <string key="PreviewValid">Configurações válidas. A prévia não salva alterações.</string>
@@ -70,9 +70,9 @@ Sem pressa ou interrupções.</string>
 
 Clique com o botão esquerdo no ícone para abrir as configurações; o botão direito abre o menu de temas e lembretes. Ctrl + Alt + Shift + D também muda o tema. O tema nunca muda automaticamente, nem pela manhã.
 
-Nas configurações, escolha os horários, o intervalo e o idioma. A mudança de idioma é uma prévia até salvar. Fechar sem salvar restaura o idioma anterior. Seguir o Windows usa o idioma de exibição ao iniciar; se não estiver disponível, usa inglês.
+As configurações são salvas automaticamente. Os botões e o idioma são aplicados imediatamente. Enter ou sair da seção de horários aplica os dois horários juntos. Os minutos são aplicados com Enter ou ao sair do campo; +/− é imediato. Ao fechar, entradas válidas são aplicadas e as inválidas mantêm o valor anterior, sem desfazer alterações salvas. Seguir o Windows usa o idioma de exibição ao iniciar, com inglês como alternativa. Uma entrada incompleta ou inválida não impede fechar. Se horários ou minutos válidos não puderem ser salvos, as configurações ficam abertas com um erro junto ao campo para tentar novamente, sem caixa de diálogo.
 
-NightCue funciona localmente, sem rede. As configurações ficam ao lado do executável. Antes de excluir ou mover a pasta, desative a inicialização com o Windows, salve e saia pelo menu do ícone.
+NightCue funciona localmente, sem rede. Configurações e estado ficam ao lado do executável. Antes de excluí-lo, desative a inicialização com o Windows, confira a confirmação e saia pelo menu do ícone. Após movê-lo, use Corrigir caminho de inicialização se o local antigo estiver registrado. Se uma mudança de inicialização falhar, um aviso será exibido e o registro será lido novamente. Se não puder ser lido, os controles de inicialização ficam desativados e o estado é desconhecido.
 
 Abra a seta ao lado do relógio e arraste o NightCue para a barra de tarefas. Também é possível exibi-lo nas configurações da barra de tarefas do Windows (Windows 11: outros ícones da bandeja do sistema; Windows 10: selecionar os ícones que aparecem na barra de tarefas). O Windows controla a visibilidade; o aplicativo não pode se fixar sozinho. Após o horário de término, um sol dourado sugere o modo claro. O tema nunca muda automaticamente.</string>
   <string key="MorningLabel">Sugerir o modo claro após o horário de término</string>
@@ -86,5 +86,25 @@ Abra a seta ao lado do relógio e arraste o NightCue para a barra de tarefas. Ta
   <string key="TrayGuide">Manter o ícone visível…</string>
   <string key="TrayGuideBody">Abra a seta ao lado do relógio e arraste o NightCue para a barra de tarefas. Também é possível exibi-lo nas configurações da barra de tarefas do Windows (Windows 11: outros ícones da bandeja do sistema; Windows 10: selecionar os ícones que aparecem na barra de tarefas). O Windows controla a visibilidade; o aplicativo não pode se fixar sozinho. Após o horário de término, um sol dourado sugere o modo claro. O tema nunca muda automaticamente.</string>
   <string key="TrayHint">Dica: arraste o NightCue dos ícones ocultos para perto do relógio.</string>
-  <string key="StartupRepair">A inicialização aponta para outro local. Salve para usar esta cópia.</string>
+  <string key="StartupRepair">Outro local registrado · corrija o caminho</string>
+  <string key="StartupUnregistered">Desativado · ative o botão para iniciar ao entrar</string>
+  <string key="StartupRegistered">Esta cópia está registrada · o Windows pode desativar a inicialização</string>
+  <string key="StartupUnknown">Não foi possível ler o registro de inicialização</string>
+  <string key="StartupPending">Atualizando o registro de inicialização…</string>
+  <string key="StartupWindows">Configurações de inicialização do Windows</string>
+  <string key="StartupDiagnostics">Abrir diagnósticos</string>
+  <string key="StartupOpenFailed">Não foi possível abrir este local. {0}</string>
+  <string key="RecoveryNotice">Não foi possível carregar um arquivo de configurações ou estado dos lembretes. Os valores padrão estão em uso. Consulte os diagnósticos.</string>
+  <string key="RecoveryAcknowledge">Fechar aviso de recuperação</string>
+  <string key="StartupSub">Iniciar discretamente na bandeja após entrar</string>
+  <string key="AutoSaveHint">As configurações são salvas automaticamente</string>
+  <string key="Saved">Salvo</string>
+  <string key="SaveFailed">Não foi possível salvar. A configuração anterior continua ativa.</string>
+  <string key="InputPending">Conclua a edição para aplicar</string>
+  <string key="Hide">Ocultar na bandeja</string>
+  <string key="RepairStartup">Corrigir caminho de inicialização</string>
+  <string key="TimeHint">Pressione Enter ou saia desta seção para aplicar os dois horários.</string>
+  <string key="SaveFailedShort">Não salvo</string>
+  <string key="ApplyRefreshFailed">Configurações salvas. Reinicie o NightCue para concluir a aplicação.</string>
+  <string key="StartupUpdateFailed">Não foi possível confirmar a alteração de inicialização. Verifique o status do registro.</string>
 </language>

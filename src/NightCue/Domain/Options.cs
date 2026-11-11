@@ -12,6 +12,19 @@ namespace NightCue
         public string Language = "system";
         public bool MorningReminder = true;
 
+        public Options Copy()
+        {
+            return new Options
+            {
+                Start = Start,
+                End = End,
+                Hotkey = Hotkey,
+                SnoozeMinutes = SnoozeMinutes,
+                Language = Language,
+                MorningReminder = MorningReminder
+            };
+        }
+
         public void Validate()
         {
             TimeSpan start, end;

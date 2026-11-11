@@ -80,16 +80,17 @@
     </Canvas>
     <StackPanel Margin="30,354,25,0" VerticalAlignment="Top">
      <TextBlock Name="HeroTitle" Text="{DynamicResource T.HeroTitle}" FontSize="24" FontWeight="SemiBold" Foreground="#F1EFF8" TextWrapping="Wrap"/>
-     <TextBlock Text="{DynamicResource T.HeroBody}" FontSize="13" LineHeight="24" Foreground="#9FA3BC" Margin="0,19,0,0"/>
+     <TextBlock Name="HeroBody" Text="{DynamicResource T.HeroBody}" FontSize="13" LineHeight="24" Foreground="#9FA3BC" Margin="0,19,0,0"/>
+     <Button Name="RecoveryDismissButton" Content="{DynamicResource T.RecoveryAcknowledge}" Visibility="Collapsed" FontSize="11" Padding="10,7" Margin="0,16,0,0"/>
     </StackPanel>
-    <Border Margin="24,0,24,62" VerticalAlignment="Bottom" Background="#292E48" CornerRadius="12" Padding="15,14">
+    <Border Name="CueStatusCard" Margin="24,0,24,62" VerticalAlignment="Bottom" Background="#292E48" CornerRadius="12" Padding="15,14">
      <StackPanel><StackPanel Orientation="Horizontal"><Ellipse Name="StatusDot" Width="6" Height="6" Fill="#E8C58D" Margin="0,0,7,0"/><TextBlock Name="StatusHeading" Text="" Foreground="#E8C58D" FontSize="12"/></StackPanel><TextBlock Name="StatusText" Text="" Foreground="#C4C6D6" FontSize="12" Margin="0,8,0,0" TextWrapping="Wrap" LineHeight="19"/></StackPanel>
     </Border>
     <TextBlock Text="{DynamicResource T.QuietFooter}" Width="244" TextAlignment="Center" Foreground="#7E829E" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20"/>
    </Grid>
   </Border>
   <Grid Grid.Column="1" Margin="34,26,34,24">
-   <Grid.RowDefinitions><RowDefinition Height="66"/><RowDefinition Height="103"/><RowDefinition Height="16"/><RowDefinition Height="168"/><RowDefinition Height="16"/><RowDefinition Height="252"/><RowDefinition Height="*"/><RowDefinition Height="43"/></Grid.RowDefinitions>
+   <Grid.RowDefinitions><RowDefinition Height="66"/><RowDefinition Height="103"/><RowDefinition Height="16"/><RowDefinition Height="168"/><RowDefinition Height="16"/><RowDefinition Height="293"/><RowDefinition Height="*"/><RowDefinition Height="43"/></Grid.RowDefinitions>
    <StackPanel><TextBlock Text="{DynamicResource T.PageTitle}" FontSize="24" FontWeight="SemiBold"/><TextBlock Text="{DynamicResource T.PageSubtitle}" Style="{StaticResource Small}" Margin="0,8,0,0"/></StackPanel>
    <Grid Grid.Row="1">
     <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="12"/><ColumnDefinition/></Grid.ColumnDefinitions>
@@ -108,7 +109,7 @@
      </Grid>
     </Button>
    </Grid>
-   <Border Grid.Row="3" Style="{StaticResource CardBox}" Padding="20,17">
+   <Border Name="TimeGroup" Grid.Row="3" Style="{StaticResource CardBox}" Padding="20,17">
     <Grid><Grid.RowDefinitions><RowDefinition Height="20"/><RowDefinition Height="83"/><RowDefinition Height="*"/></Grid.RowDefinitions>
      <Grid><TextBlock Text="{DynamicResource T.WindowLabel}" FontWeight="SemiBold"/><TextBlock Text="{DynamicResource T.EveryDay}" HorizontalAlignment="Right" Style="{StaticResource Small}"/></Grid>
      <Grid Grid.Row="1" Margin="0,12,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="38"/><ColumnDefinition/></Grid.ColumnDefinitions>
@@ -116,25 +117,33 @@
       <TextBlock Text="→" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource Muted}" FontSize="18"/>
       <Border Grid.Column="2" Background="{DynamicResource Field}" CornerRadius="10" Padding="15,8"><StackPanel><TextBlock Name="EndLabel" Style="{StaticResource Small}"/><TextBox Name="EndTime" Style="{StaticResource Input}" MaxLength="5" AutomationProperties.Name="{DynamicResource T.End}"/></StackPanel></Border>
      </Grid>
-     <TextBlock Grid.Row="2" Text="{DynamicResource T.WindowHint}" Style="{StaticResource Small}" VerticalAlignment="Bottom"/>
+     <TextBlock Name="TimeFeedback" Grid.Row="2" Text="{DynamicResource T.TimeHint}" Style="{StaticResource Small}" VerticalAlignment="Bottom"/>
     </Grid>
    </Border>
    <Border Grid.Row="5" Style="{StaticResource CardBox}" Padding="20,0">
-    <Grid><Grid.RowDefinitions><RowDefinition Height="50"/><RowDefinition Height="1"/><RowDefinition Height="49"/><RowDefinition Height="1"/><RowDefinition Height="49"/><RowDefinition Height="1"/><RowDefinition Height="50"/><RowDefinition Height="1"/><RowDefinition Height="49"/></Grid.RowDefinitions>
-     <Grid><TextBlock Text="{DynamicResource T.SnoozeLabel}" MaxWidth="310" HorizontalAlignment="Left" VerticalAlignment="Center"/><StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center"><Button Name="Minus" Content="−" Width="29" Height="29" Padding="0" Background="{DynamicResource Field}" AutomationProperties.Name="{DynamicResource T.LessMinutes}"/><TextBox Name="Minutes" Style="{StaticResource Input}" FontSize="15" FontWeight="SemiBold" Width="36" TextAlignment="Center" MaxLength="3" Margin="3,0" AutomationProperties.Name="{DynamicResource T.SnoozeLabel}"/><TextBlock Text="{DynamicResource T.Minutes}" Style="{StaticResource Small}" VerticalAlignment="Center" Margin="1,0,11,0"/><Button Name="Plus" Content="+" Width="29" Height="29" Padding="0" Background="{DynamicResource Field}" AutomationProperties.Name="{DynamicResource T.MoreMinutes}"/></StackPanel></Grid>
+    <Grid><Grid.RowDefinitions><RowDefinition Height="50"/><RowDefinition Height="1"/><RowDefinition Height="90"/><RowDefinition Height="1"/><RowDefinition Height="49"/><RowDefinition Height="1"/><RowDefinition Height="50"/><RowDefinition Height="1"/><RowDefinition Height="49"/></Grid.RowDefinitions>
+     <Grid><StackPanel MaxWidth="310" HorizontalAlignment="Left" VerticalAlignment="Center"><TextBlock Text="{DynamicResource T.SnoozeLabel}"/><TextBlock Name="MinutesFeedback" FontSize="11" Foreground="#DB866E" Visibility="Collapsed" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"/></StackPanel><StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center"><Button Name="Minus" Content="−" Width="29" Height="29" Padding="0" Background="{DynamicResource Field}" AutomationProperties.Name="{DynamicResource T.LessMinutes}"/><TextBox Name="Minutes" Style="{StaticResource Input}" FontSize="15" FontWeight="SemiBold" Width="36" TextAlignment="Center" MaxLength="3" Margin="3,0" AutomationProperties.Name="{DynamicResource T.SnoozeLabel}"/><TextBlock Text="{DynamicResource T.Minutes}" Style="{StaticResource Small}" VerticalAlignment="Center" Margin="1,0,11,0"/><Button Name="Plus" Content="+" Width="29" Height="29" Padding="0" Background="{DynamicResource Field}" AutomationProperties.Name="{DynamicResource T.MoreMinutes}"/></StackPanel></Grid>
      <Border Grid.Row="1" Background="{DynamicResource Line}"/>
-     <Grid Grid.Row="2"><TextBlock Text="{DynamicResource T.StartupLabel}" VerticalAlignment="Center"/><ToggleButton Name="StartupToggle" HorizontalAlignment="Right" VerticalAlignment="Center" AutomationProperties.Name="{DynamicResource T.StartupLabel}"/></Grid>
+     <Grid Grid.Row="2" Margin="0,6"><Grid.RowDefinitions><RowDefinition Height="24"/><RowDefinition Height="27"/><RowDefinition Height="27"/></Grid.RowDefinitions>
+      <TextBlock Text="{DynamicResource T.StartupLabel}" VerticalAlignment="Center"/>
+      <ToggleButton Name="StartupToggle" HorizontalAlignment="Right" VerticalAlignment="Center" AutomationProperties.Name="{DynamicResource T.StartupLabel}" ToolTip="{DynamicResource T.StartupSub}"/>
+      <TextBlock Name="StartupStatus" Grid.Row="1" FontSize="11" Foreground="{DynamicResource Muted}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+      <Grid Grid.Row="2"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="10"/><ColumnDefinition/></Grid.ColumnDefinitions>
+       <Button Name="StartupWindowsButton" Content="{DynamicResource T.StartupWindows}" FontSize="11" Padding="8,3" Background="{DynamicResource Field}"/>
+       <Button Name="DiagnosticsButton" Grid.Column="2" Content="{DynamicResource T.StartupDiagnostics}" FontSize="11" Padding="8,3" Background="{DynamicResource Field}"/>
+      </Grid>
+     </Grid>
      <Border Grid.Row="3" Background="{DynamicResource Line}"/>
-     <Grid Grid.Row="4"><TextBlock Text="{DynamicResource T.HotkeyLabel}" MaxWidth="240" HorizontalAlignment="Left" VerticalAlignment="Center"/><Border Background="{DynamicResource Field}" CornerRadius="5" HorizontalAlignment="Right" Margin="0,0,58,0" VerticalAlignment="Center" Padding="8,4"><TextBlock Name="ShortcutHint" Text="Ctrl + Alt + Shift + D" Foreground="{DynamicResource Muted}" FontFamily="Segoe UI" FontSize="11"/></Border><ToggleButton Name="HotkeyToggle" HorizontalAlignment="Right" VerticalAlignment="Center" AutomationProperties.Name="{DynamicResource T.HotkeyLabel}"/></Grid>
+     <Grid Grid.Row="4"><StackPanel MaxWidth="240" HorizontalAlignment="Left" VerticalAlignment="Center"><TextBlock Text="{DynamicResource T.HotkeyLabel}"/><TextBlock Name="HotkeyFeedback" FontSize="11" Foreground="#DB866E" Visibility="Collapsed" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"/></StackPanel><Border Background="{DynamicResource Field}" CornerRadius="5" HorizontalAlignment="Right" Margin="0,0,58,0" VerticalAlignment="Center" Padding="8,4"><TextBlock Name="ShortcutHint" Text="Ctrl + Alt + Shift + D" Foreground="{DynamicResource Muted}" FontFamily="Segoe UI" FontSize="11"/></Border><ToggleButton Name="HotkeyToggle" HorizontalAlignment="Right" VerticalAlignment="Center" AutomationProperties.Name="{DynamicResource T.HotkeyLabel}"/></Grid>
 
      <Border Grid.Row="5" Background="{DynamicResource Line}"/>
-     <Grid Grid.Row="6"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="292"/></Grid.ColumnDefinitions><TextBlock Text="{DynamicResource T.LanguageLabel}" VerticalAlignment="Center"/><ComboBox Name="LanguageChoice" Grid.Column="1" VerticalAlignment="Center" Height="34" AutomationProperties.Name="{DynamicResource T.LanguageLabel}"/></Grid>
+     <Grid Grid.Row="6"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="292"/></Grid.ColumnDefinitions><StackPanel VerticalAlignment="Center"><TextBlock Text="{DynamicResource T.LanguageLabel}"/><TextBlock Name="LanguageFeedback" FontSize="11" Foreground="#DB866E" Visibility="Collapsed" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"/></StackPanel><ComboBox Name="LanguageChoice" Grid.Column="1" VerticalAlignment="Center" Height="34" AutomationProperties.Name="{DynamicResource T.LanguageLabel}"/></Grid>
      <Border Grid.Row="7" Background="{DynamicResource Line}"/>
-     <Grid Grid.Row="8"><TextBlock Text="{DynamicResource T.MorningLabel}" MaxWidth="510" HorizontalAlignment="Left" VerticalAlignment="Center"/><ToggleButton Name="MorningToggle" HorizontalAlignment="Right" VerticalAlignment="Center" AutomationProperties.Name="{DynamicResource T.MorningLabel}"/></Grid>
+     <Grid Grid.Row="8"><StackPanel MaxWidth="510" HorizontalAlignment="Left" VerticalAlignment="Center"><TextBlock Text="{DynamicResource T.MorningLabel}"/><TextBlock Name="MorningFeedback" FontSize="11" Foreground="#DB866E" Visibility="Collapsed" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"/></StackPanel><ToggleButton Name="MorningToggle" HorizontalAlignment="Right" VerticalAlignment="Center" AutomationProperties.Name="{DynamicResource T.MorningLabel}"/></Grid>
     </Grid>
    </Border>
    <TextBlock Grid.Row="6" Name="Feedback" Text="" Foreground="#DB866E" FontSize="12" TextWrapping="Wrap" VerticalAlignment="Center"/>
-   <Grid Grid.Row="7"><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><Button Name="MoreButton" Content="{DynamicResource T.More}" Padding="15,8" Background="Transparent"/><TextBlock Grid.Column="1" Text="{DynamicResource T.HideHint}" TextAlignment="Center" Margin="10,0" FontSize="11" Style="{StaticResource Small}" VerticalAlignment="Center" HorizontalAlignment="Center"/><Button Name="SaveButton" Grid.Column="2" Content="{DynamicResource T.Save}" Background="{DynamicResource Accent}" BorderBrush="{DynamicResource Accent}" Foreground="White" Padding="24,10" IsDefault="True"/></Grid>
+   <Grid Grid.Row="7"><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><Button Name="MoreButton" Content="{DynamicResource T.More}" Padding="15,8" Background="Transparent"/><TextBlock Grid.Column="1" Text="{DynamicResource T.HideHint}" TextAlignment="Center" Margin="10,0" FontSize="11" Style="{StaticResource Small}" VerticalAlignment="Center" HorizontalAlignment="Center"/><Button Name="HideButton" Grid.Column="2" Content="{DynamicResource T.Hide}" Background="{DynamicResource Accent}" BorderBrush="{DynamicResource Accent}" Foreground="White" Padding="24,10"/></Grid>
   </Grid>
  </Grid>
 </Viewbox>

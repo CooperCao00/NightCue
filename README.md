@@ -27,18 +27,22 @@ There are no sounds, notification banners, flashing icons, or automatic theme ch
 - Optional light-mode reminder after the end time, enabled by default. Neither cue changes the theme automatically.
 - Optional sign-in startup, local settings, and light/dark settings-window styling.
 
-One executable includes **English, Simplified Chinese, Traditional Chinese, Japanese, Korean, German, French, Spanish, Brazilian Portuguese and Russian**. It follows the Windows display language by default, with English as fallback. Choose a language in Settings to preview it immediately; save to keep it, or close without saving to restore the previous choice. No separate language downloads are needed. [Language and font behavior](docs/LOCALIZATION.md).
+One executable includes **English, Simplified Chinese, Traditional Chinese, Japanese, Korean, German, French, Spanish, Brazilian Portuguese and Russian**. It follows the Windows display language by default, with English as fallback. Choosing a language applies and saves it immediately. Closing Settings does not undo a saved language change. No separate language downloads are needed. [Language and font behavior](docs/LOCALIZATION.md).
 
 The default morning cue appears from **07:00 until the next 23:00** if the theme is still dark. You can switch to light, snooze, keep dark for this period, or disable this cue in Settings.
 
 ## Get started
+
+The automatic-saving changes described here are in the current working source and have not been packaged as a new release.
 
 Download `NightCue-v1.3.1-windows-portable.zip` from this repository's **Releases** section once a release has been published. If none is available, build from source below.
 
 1. Extract the entire ZIP to a folder you can write to. Keep this folder in a stable location if you enable sign-in startup.
 2. Run `NightCue.exe`. No administrator access is needed.
 3. Make NightCue visible next to the clock using Windows taskbar settings or by dragging it out of the hidden-icons menu. The tray menu includes visibility guidance; Windows controls pinning.
-4. Left-click the tray icon to open **Settings**, adjust the times and language, then select **Save & hide**.
+4. Left-click the tray icon to open **Settings**. Changes save automatically; select **Hide to tray** when finished.
+
+Switches and language save immediately. For the two times, press Enter or leave the time section to apply them together. Minutes apply on Enter or leaving the field; the +/− buttons apply immediately. Closing tries to submit valid drafts. Incomplete or invalid input allows closing and keeps the last valid values. If a valid time or minute draft cannot be written, the window stays open with an inline error so you can retry; no dialog appears. A settings-file write failure keeps the previous setting active and is shown beside the affected control. Automatic saving does not change the manual-only theme behavior.
 
 Left-click opens or activates Settings, recreates it after closing, and restores it when minimized. Right-click opens the quick menu for theme switching, snooze and Exit. This reopening behavior is fixed in **1.3.1**.
 
@@ -81,11 +85,15 @@ GitHub Actions checks both build paths on Windows and uploads packages as workfl
 
 ## Data, startup, and uninstall
 
-NightCue makes no network requests and includes no analytics or automatic updater. It stores `settings.xml`, `state.xml`, and, on errors, `error.log` beside the executable. Logs can contain local paths: review them before posting publicly. Do not install into a read-only location such as Program Files.
+NightCue makes no network requests and includes no analytics or automatic updater. `settings.xml` and `state.xml` remain beside the executable. Diagnostics and recovery files are stored in `%LOCALAPPDATA%\NightCue\Diagnostics`; **Open diagnostics** opens that folder. Logs and recovery backups can contain local paths or configuration data: review them before sharing. Keep the application in a writable folder.
+
+Settings shows whether startup is off, registered for this copy, registered elsewhere, or unreadable. The startup switch applies immediately. On failure, feedback is shown and registration is read again; if it remains unreadable, startup controls are disabled and the status is unknown. For another registered location, click **Repair startup path**; after repair the button returns to **Windows startup settings**. Unreadable registration blocks startup changes, while other settings can still save without touching the startup entry. NightCue does not change Windows' separate startup-disable decision. A registered path alone does not prove that sign-in startup works.
+
+If settings or reminder state cannot be loaded, NightCue uses defaults for the affected file and shows a persistent recovery notice in the left panel. For corrupt or invalid files it attempts to preserve the original in diagnostics before saving defaults. If reading or backup fails, it keeps defaults in memory and protects the original from writes for that process. **Dismiss recovery notice** clears the notice, not the backup or the underlying access problem. See [recovery details](docs/TROUBLESHOOTING.md).
 
 Choosing a theme writes only the current user's `AppsUseLightTheme` and `SystemUsesLightTheme` values under `HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize`. Enabling sign-in startup adds a `NightCue` value under `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`. It does not install a service or scheduled task.
 
-To uninstall, turn off **Run at sign-in**, save, choose **Exit** from the tray menu, then delete the extracted folder. Your current Windows theme remains as chosen. When upgrading, exit the old app and preserve `settings.xml` and `state.xml`. If you moved the folder, run the new copy, keep startup enabled and save: NightCue warns about the old path and updates it. If Windows has disabled the startup app in Task Manager, enable it there as well. Actual sign-in behavior still needs to be checked on your machine. [Troubleshooting](docs/TROUBLESHOOTING.md).
+To uninstall, turn off **Run at sign-in**, confirm success, choose **Exit** from the tray menu, then delete the extracted folder. Your current Windows theme remains as chosen. When upgrading, exit the old app and preserve `settings.xml` and `state.xml`. If you moved the folder, run the new copy and click **Repair startup path** when an old location is registered. If Windows has disabled the startup app, use **Windows startup settings** or Task Manager to enable it yourself. Actual sign-in behavior still needs to be checked on your machine. [Troubleshooting](docs/TROUBLESHOOTING.md).
 
 ## Contributing
 

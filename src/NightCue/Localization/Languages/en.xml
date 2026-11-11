@@ -26,9 +26,9 @@ No rush. No interruptions.</string>
   <string key="HotkeyLabel">Theme shortcut</string>
   <string key="LanguageLabel">Language</string>
   <string key="SystemDefault">Follow Windows</string>
-  <string key="LanguageHint">Language preview · Save to keep your choice.</string>
+  <string key="LanguageHint">Language changes are saved automatically.</string>
   <string key="More">More ···</string>
-  <string key="Save">Save &amp; hide</string>
+  <string key="Save">Hide to tray</string>
   <string key="HideHint">Keeps running in the tray</string>
   <string key="SwitchDark">Switch to dark mode</string>
   <string key="SwitchLight">Switch to light mode</string>
@@ -56,10 +56,10 @@ No rush. No interruptions.</string>
   <string key="InvalidStart">Enter a start time such as 23:00.</string>
   <string key="InvalidEnd">Enter an end time such as 07:00.</string>
   <string key="InvalidSnooze">Snooze must be between 1 and 120 minutes.</string>
-  <string key="ReadFailure">Cannot read or save data. See error.log in the app folder.</string>
-  <string key="ThemeFailure">Could not change the theme. See error.log.</string>
-  <string key="SaveFailure">Could not save settings. See error.log.</string>
-  <string key="StartFailure">NightCue could not start. See error.log in the app folder.</string>
+  <string key="ReadFailure">Cannot read or save data. Open diagnostics for details.</string>
+  <string key="ThemeFailure">Could not change the theme. Open diagnostics for details.</string>
+  <string key="SaveFailure">Could not save settings. Open diagnostics for details.</string>
+  <string key="StartFailure">NightCue could not start. Open diagnostics for details.</string>
   <string key="MissingResource">The settings view is missing.</string>
   <string key="PreviewNotice">Preview only. No system settings will change.</string>
   <string key="PreviewValid">Settings are valid. Preview does not save changes.</string>
@@ -70,9 +70,9 @@ No rush. No interruptions.</string>
 
 Left-click the tray icon to open Settings; right-click for theme, snooze and reminder actions. Ctrl + Alt + Shift + D also switches themes. Themes never change automatically, including in the morning.
 
-Settings lets you choose a time window, snooze delay and language. Language changes are previews until you save; closing without saving restores the previous language. Follow Windows uses the system display language at startup, with English as fallback.
+Settings save automatically. Switches and language apply immediately. Press Enter or leave the time section to apply both times together; minutes apply on Enter or leaving the field, and +/− applies immediately. Closing tries to apply valid drafts, keeps earlier values for invalid drafts and does not undo saved changes. Follow Windows uses the display language at startup, with English as fallback. Incomplete or invalid input does not prevent closing. If a valid time or minute draft cannot be written, Settings stays open with an inline error for retry, without a dialog.
 
-NightCue runs locally, without network requests. Settings and state are stored beside the executable. Before uninstalling or moving it, disable sign-in startup, save, and exit from the tray menu. Then delete or move the folder.
+NightCue runs locally, without network requests. Settings and state stay beside the executable. Before uninstalling, turn off sign-in startup, wait for confirmation and exit from the tray menu. After moving the app, use Repair startup path if an old location is registered. If a startup change fails, feedback is shown and registration is read again. If it cannot be read, startup controls are disabled and the status is unknown.
 
 Open the hidden-icons arrow beside the clock and drag NightCue onto the taskbar. You can also enable NightCue in Windows taskbar settings (Windows 11: other system tray icons; Windows 10: select which icons appear on the taskbar). Windows controls icon visibility; NightCue cannot pin itself. A gold sun offers light mode after the end time. It never switches themes automatically.</string>
   <string key="MorningLabel">Offer light mode after the end time</string>
@@ -86,5 +86,25 @@ Open the hidden-icons arrow beside the clock and drag NightCue onto the taskbar.
   <string key="TrayGuide">Keep the tray icon visible…</string>
   <string key="TrayGuideBody">Open the hidden-icons arrow beside the clock and drag NightCue onto the taskbar. You can also enable NightCue in Windows taskbar settings (Windows 11: other system tray icons; Windows 10: select which icons appear on the taskbar). Windows controls icon visibility; NightCue cannot pin itself. A gold sun offers light mode after the end time. It never switches themes automatically.</string>
   <string key="TrayHint">Tip: drag NightCue from the hidden-icons menu to beside the clock.</string>
-  <string key="StartupRepair">Startup points to another location. Save to use this copy.</string>
+  <string key="StartupRepair">Registered for another location · repair the path</string>
+  <string key="StartupUnregistered">Off · enable the switch to start at sign-in</string>
+  <string key="StartupRegistered">Registered for this copy · Windows may still disable startup</string>
+  <string key="StartupUnknown">Unable to read startup registration</string>
+  <string key="StartupPending">Updating startup registration…</string>
+  <string key="StartupWindows">Windows startup settings</string>
+  <string key="StartupDiagnostics">Open diagnostics</string>
+  <string key="StartupOpenFailed">Could not open this location. {0}</string>
+  <string key="RecoveryNotice">A settings or reminder-state file could not be loaded. Defaults are in use. Open diagnostics for details.</string>
+  <string key="RecoveryAcknowledge">Dismiss recovery notice</string>
+  <string key="StartupSub">Start quietly in the tray after signing in</string>
+  <string key="AutoSaveHint">Settings save automatically</string>
+  <string key="Saved">Saved</string>
+  <string key="SaveFailed">Could not save. The previous setting is still active.</string>
+  <string key="InputPending">Finish editing to apply</string>
+  <string key="Hide">Hide to tray</string>
+  <string key="RepairStartup">Repair startup path</string>
+  <string key="TimeHint">Press Enter or leave this section to apply both times.</string>
+  <string key="SaveFailedShort">Not saved</string>
+  <string key="ApplyRefreshFailed">Settings saved. Restart NightCue to finish applying them.</string>
+  <string key="StartupUpdateFailed">Could not confirm the startup change. Check the registration status.</string>
 </language>

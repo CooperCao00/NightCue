@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace NightCue
 {
-    public class TrayApp : ApplicationContext
+    public class TrayApp : ApplicationContext, ISettingsActions
     {
         readonly NotifyIcon tray;
         readonly ContextMenuStrip menu;
@@ -20,15 +20,16 @@ namespace NightCue
         SettingsForm settings;
         string lastState;
         string warning = "";
+        bool optionsRefreshFailed;
         int ticks;
         bool dismissTargetDark;
         public TrayApp(bool install, bool show, EventWaitHandle signal)
         {
             showSignal = signal;
-            options = Store.Read<Options>("settings.xml");
+            options = Store.ReadRecovering<Options>("settings.xml", delegate(Options value) { value.Validate(); });
             L.Select(options.Language);
             options.Validate();
-            state = Store.Read<NightState>("state.xml");
+            state = Store.ReadRecovering<NightState>("state.xml", null);
             if (install)
             {
                 Store.Save("settings.xml", options);
@@ -167,7 +168,8 @@ namespace NightCue
         public Cue CurrentCue { get { return cue; } }
         public bool HotkeyEnabled { get { return options.Hotkey; } }
         public bool HotkeyAvailable { get { return host.HotkeyOK; } }
-        public string Warning { get { return warning.Length == 0 ? "" : L.Text("ReadFailure"); } }
+        public string Warning { get { return optionsRefreshFailed ? L.Text("ApplyRefreshFailed") : warning.Length == 0 ? "" : L.Text("ReadFailure"); } }
+        public StartupRegistration StartupState { get { return Startup.Registration; } }
 
         string StateToken()
         {
@@ -188,7 +190,13 @@ namespace NightCue
             try
             {
                 cue = Schedule.Evaluate(DateTime.Now, DateTime.UtcNow, options, state, Theme.IsDark());
-                SaveState();
+                warning = "";
+                try { SaveState(); }
+                catch (Exception saveFailure)
+                {
+                    warning = "ReadFailure";
+                    Store.Log(saveFailure);
+                }
                 string text = StatusText();
                 tray.Icon = cue == Cue.Pending ? amber : cue == Cue.LightPending ? sun : cue == Cue.Dark ? blue : gray;
                 tray.Text = L.TrayText("NightCue · " + text);
@@ -202,7 +210,6 @@ namespace NightCue
                 dismiss.Enabled = night || options.MorningReminder;
                 restore.Text = L.Text(night ? "Restore" : "RestoreDay");
                 restore.Enabled = cue == Cue.Snoozed || cue == Cue.Dismissed || cue == Cue.LightSnoozed || cue == Cue.LightDismissed;
-                warning = "";
                 if (settings != null && !settings.IsDisposed)
                     settings.UpdateStatus();
             }
@@ -270,25 +277,50 @@ namespace NightCue
             menu.Show(anchor, new Point(0, anchor.Height));
         }
 
-        public bool ApplyOptions(Options next, bool startup)
+        public bool SetStartup(bool enabled)
         {
             try
             {
-                next.Validate();
-                Startup.SaveSettings(startup, delegate { Store.Save("settings.xml", next); });
-
-                options = next;
-                L.Select(options.Language);
-                host.SetHotkey(options.Hotkey);
-                Tick();
+                Startup.Set(enabled);
                 return true;
             }
             catch (Exception ex)
             {
                 Store.Log(ex);
-                MessageBox.Show(L.Text("SaveFailure"), "NightCue", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
+        }
+
+        public bool ApplyOptions(Options next)
+        {
+            Options accepted;
+            try
+            {
+                accepted = next.Copy();
+                accepted.Validate();
+                Store.Save("settings.xml", accepted);
+            }
+            catch (Exception ex)
+            {
+                Store.Log(ex);
+                return false;
+            }
+
+            // Persistence is committed. A refresh failure must not make the form
+            // roll back its copy and later overwrite settings already on disk.
+            bool hotkeyChanged = options.Hotkey != accepted.Hotkey;
+            options = accepted;
+            if (hotkeyChanged)
+            {
+                try { host.SetHotkey(options.Hotkey); }
+                catch (Exception ex) { optionsRefreshFailed = true; Store.Log(ex); }
+            }
+            try { L.Select(options.Language); }
+            catch (Exception ex) { optionsRefreshFailed = true; Store.Log(ex); }
+            // Keep runtime refresh errors visible until restart; Tick clears its
+            // own transient I/O warning independently.
+            Tick();
+            return true;
         }
 
         protected override void ExitThreadCore()

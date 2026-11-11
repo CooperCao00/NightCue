@@ -24,16 +24,24 @@ No sounds, banners, flashing or unsolicited windows. NightCue does not detect li
 
 Language
 One executable includes English, Simplified/Traditional Chinese, Japanese, Korean, German, French, Spanish, Brazilian Portuguese and Russian.
-Follow Windows uses the Windows display language at startup, with English as fallback. Select a language to preview it immediately, then Save & hide to keep it. Closing without saving restores the previous language. Language selection also chooses a suitable UI font; Windows supplies font fallback.
+Follow Windows uses the Windows display language at startup, with English as fallback. Language changes apply and save immediately. Closing Settings does not undo changes already saved. Language selection also chooses a suitable UI font; Windows supplies font fallback.
 Changing the Windows display language takes effect in NightCue after restarting it when Follow Windows is selected. Windows-owned dialog buttons may still follow the OS language.
 
+Automatic saving
+Switches and language save immediately. Press Enter or leave the time section to validate and apply both times together. Minutes apply on Enter or leaving the input; +/− applies immediately.
+Closing Settings or using Hide to tray tries to submit valid drafts. Incomplete or invalid drafts allow closing and keep the previous valid configuration; closing does not undo settings already applied. If writing a valid time or minute draft fails, Settings stays open with an inline error for retry, without a dialog.
+Settings-file write failures appear beside the affected control. Reminder/hotkey switches and language return to the previous setting; numeric fields retain the draft for correction while the old value remains active.
+The theme buttons still change themes only when you click them. Saving settings never turns theme changes into an automatic schedule.
+
 Data and startup
-Settings and state are saved beside the executable in settings.xml and state.xml. Errors go to error.log, which may contain paths; review it before sharing.
-Use a stable writable folder. After moving it, exit the old instance, start the new copy, leave Run at sign-in enabled and save to update the startup path. A hint identifies a different registered location.
-Windows may separately disable startup apps in Task Manager. Check there if the path is correct but sign-in startup does not work.
-If malformed XML prevents startup, exit, back up the XML files, then rename them and restart.
+Settings and state remain beside the executable in settings.xml and state.xml. Logs and recovery files are in %LOCALAPPDATA%\NightCue\Diagnostics. Use Open diagnostics in Settings to view them; review local paths and configuration data before sharing.
+Use a stable writable folder. After moving it, exit the old instance, start the new copy, click Repair startup path when a different location is registered. After repair, that button returns to Windows startup settings.
+Settings distinguishes unregistered startup, registration for this copy, registration for another location and unreadable registration. The startup switch applies immediately. On failure, feedback is shown and registration is read again; if it remains unreadable, startup controls are disabled and the status is unknown. Unreadable registration blocks startup changes only; other settings save independently without rewriting the startup entry.
+Windows startup settings opens the system controls. Windows may disable an otherwise valid registration; NightCue never overrides that choice. Enable it yourself there or in Task Manager if desired. A correct path is not proof of a successful sign-in test.
+If settings or reminder state cannot load, defaults are used for that file and a persistent notice appears in the left panel. Corrupt or invalid originals are backed up before defaults can replace them. When reading or backup fails, defaults stay in memory and writes to that original are blocked for this process; fix access and restart to retry.
+Dismiss recovery notice clears the notice, not its backup or the underlying problem. Open diagnostics for details. error.log and diagnostics.log each rotate at 128 KiB with one .1 copy; recovery.pending keeps the notice, and .corrupt-<UTC timestamp>-<unique ID>.bak files preserve originals. Backups are not automatically deleted when the notice is dismissed.
 Upgrade: exit the old app, replace program files and preserve XML files. Legacy settings default to Follow Windows and an enabled morning cue.
-Uninstall: disable Run at sign-in and save, exit from the tray, then delete the folder. Your chosen theme remains unchanged.
+Uninstall: disable Run at sign-in and confirm success, exit from the tray, then delete the app folder. Your chosen theme remains unchanged. Diagnostics remain in the local application-data folder; remove them separately if no longer needed.
 All copies share a single instance; launching another copy shows the running one.
 
 Apps must support following the Windows theme. Avoid conflicting schedules in other theme tools. The executable is unsigned; SHA256SUMS.txt accompanies release downloads.

@@ -26,9 +26,9 @@ Sin prisa ni interrupciones.</string>
   <string key="HotkeyLabel">Atajo de tema</string>
   <string key="LanguageLabel">Idioma / Language</string>
   <string key="SystemDefault">Seguir a Windows</string>
-  <string key="LanguageHint">Vista previa del idioma. Guarda para conservarlo.</string>
+  <string key="LanguageHint">Los cambios de idioma se guardan automáticamente.</string>
   <string key="More">Más ···</string>
-  <string key="Save">Guardar y ocultar</string>
+  <string key="Save">Ocultar en la bandeja</string>
   <string key="HideHint">Sigue activo en la bandeja</string>
   <string key="SwitchDark">Cambiar a modo oscuro</string>
   <string key="SwitchLight">Cambiar a modo claro</string>
@@ -56,10 +56,10 @@ Sin prisa ni interrupciones.</string>
   <string key="InvalidStart">Introduce una hora de inicio como 23:00.</string>
   <string key="InvalidEnd">Introduce una hora de fin como 07:00.</string>
   <string key="InvalidSnooze">El intervalo debe ser de 1 a 120 minutos.</string>
-  <string key="ReadFailure">No se pueden leer o guardar datos. Consulta error.log.</string>
-  <string key="ThemeFailure">No se pudo cambiar el tema. Consulta error.log.</string>
-  <string key="SaveFailure">No se pudieron guardar los ajustes. Consulta error.log.</string>
-  <string key="StartFailure">NightCue no pudo iniciarse. Consulta error.log.</string>
+  <string key="ReadFailure">No se pueden leer o guardar datos. Consulta los diagnósticos.</string>
+  <string key="ThemeFailure">No se pudo cambiar el tema. Consulta los diagnósticos.</string>
+  <string key="SaveFailure">No se pudieron guardar los ajustes. Consulta los diagnósticos.</string>
+  <string key="StartFailure">NightCue no pudo iniciarse. Consulta los diagnósticos.</string>
   <string key="MissingResource">Falta la vista de ajustes.</string>
   <string key="PreviewNotice">Solo vista previa. No se cambiará la configuración del sistema.</string>
   <string key="PreviewValid">Ajustes válidos. La vista previa no guarda cambios.</string>
@@ -70,9 +70,9 @@ Sin prisa ni interrupciones.</string>
 
 Haz clic izquierdo en el icono para abrir la configuración; el clic derecho abre el menú de temas y avisos. Ctrl + Alt + Shift + D también cambia el tema. Nunca cambia automáticamente, tampoco por la mañana.
 
-En Ajustes puedes elegir el horario, el intervalo y el idioma. El idioma es una vista previa hasta que guardes. Cerrar sin guardar restaura el idioma anterior. Seguir a Windows usa el idioma de pantalla al iniciar; si no está disponible, usa inglés.
+Los ajustes se guardan automáticamente. Los interruptores y el idioma se aplican al instante. Intro o salir de la sección de horarios aplica ambas horas. Los minutos se aplican con Intro o al salir del campo; +/− es inmediato. Al cerrar se aplican las entradas válidas, se mantienen los valores anteriores para las inválidas y no se deshacen los cambios guardados. Seguir a Windows usa el idioma de pantalla al iniciar, con inglés como alternativa. Una entrada incompleta o no válida no impide cerrar. Si no se pueden guardar horas o minutos válidos, Ajustes permanece abierto con un error junto al campo para reintentar, sin cuadro de diálogo.
 
-NightCue funciona localmente, sin red. Los ajustes se guardan junto al ejecutable. Antes de borrar o mover la carpeta, desactiva el inicio con Windows, guarda y sal desde el menú del icono.
+NightCue funciona localmente, sin red. Los ajustes y el estado quedan junto al ejecutable. Antes de borrarlo, desactiva el inicio con Windows, comprueba la confirmación y sal desde el menú del icono. Tras moverlo, usa Reparar ruta de inicio si está registrada la ubicación anterior. Si falla un cambio de inicio, se muestra un aviso y se vuelve a leer el registro. Si no se puede leer, los controles de inicio se desactivan y el estado es desconocido.
 
 Abre la flecha junto al reloj y arrastra NightCue a la barra de tareas. También puedes mostrarlo en la configuración de la barra de tareas de Windows (Windows 11: otros iconos de la bandeja del sistema; Windows 10: seleccionar los iconos que aparecen en la barra de tareas). Windows controla la visibilidad; la aplicación no puede anclarse sola. Después de la hora de fin, un sol dorado sugiere el modo claro. El tema nunca cambia automáticamente.</string>
   <string key="MorningLabel">Sugerir el modo claro después de la hora de fin</string>
@@ -86,5 +86,25 @@ Abre la flecha junto al reloj y arrastra NightCue a la barra de tareas. También
   <string key="TrayGuide">Mantener visible el icono…</string>
   <string key="TrayGuideBody">Abre la flecha junto al reloj y arrastra NightCue a la barra de tareas. También puedes mostrarlo en la configuración de la barra de tareas de Windows (Windows 11: otros iconos de la bandeja del sistema; Windows 10: seleccionar los iconos que aparecen en la barra de tareas). Windows controla la visibilidad; la aplicación no puede anclarse sola. Después de la hora de fin, un sol dorado sugiere el modo claro. El tema nunca cambia automáticamente.</string>
   <string key="TrayHint">Consejo: arrastra NightCue desde los iconos ocultos hasta el reloj.</string>
-  <string key="StartupRepair">El inicio apunta a otra ubicación. Guarda para usar esta copia.</string>
+  <string key="StartupRepair">Otra ubicación registrada · repara la ruta</string>
+  <string key="StartupUnregistered">Desactivado · activa el interruptor para iniciar con la sesión</string>
+  <string key="StartupRegistered">Esta copia está registrada · Windows puede desactivar el inicio</string>
+  <string key="StartupUnknown">No se puede leer el registro de inicio</string>
+  <string key="StartupPending">Actualizando el registro de inicio…</string>
+  <string key="StartupWindows">Configuración de inicio de Windows</string>
+  <string key="StartupDiagnostics">Abrir diagnósticos</string>
+  <string key="StartupOpenFailed">No se pudo abrir esta ubicación. {0}</string>
+  <string key="RecoveryNotice">No se pudo cargar un archivo de ajustes o estado de avisos. Se usan los valores predeterminados. Consulta los diagnósticos.</string>
+  <string key="RecoveryAcknowledge">Cerrar aviso de recuperación</string>
+  <string key="StartupSub">Iniciar discretamente en la bandeja al iniciar sesión</string>
+  <string key="AutoSaveHint">Los ajustes se guardan automáticamente</string>
+  <string key="Saved">Guardado</string>
+  <string key="SaveFailed">No se pudo guardar. El ajuste anterior sigue activo.</string>
+  <string key="InputPending">Termina de editar para aplicar</string>
+  <string key="Hide">Ocultar en la bandeja</string>
+  <string key="RepairStartup">Reparar ruta de inicio</string>
+  <string key="TimeHint">Pulsa Intro o sal de esta sección para aplicar ambas horas.</string>
+  <string key="SaveFailedShort">Sin guardar</string>
+  <string key="ApplyRefreshFailed">Ajustes guardados. Reinicia NightCue para terminar de aplicarlos.</string>
+  <string key="StartupUpdateFailed">No se pudo confirmar el cambio de inicio. Comprueba el estado del registro.</string>
 </language>

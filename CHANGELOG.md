@@ -1,5 +1,19 @@
 # Changelog / 更新记录
 
+## Unreleased — 2026-11-07
+
+Working-source changes; version metadata remains 1.3.1. This section supersedes older save/cancel interaction descriptions. No new release package is published by this change.
+
+- Settings now save automatically: switches and language apply immediately, both times commit together on Enter or leaving their section, minute entry commits on Enter or leaving its field, and +/− applies immediately. Hide/close also attempts valid drafts; incomplete or invalid drafts allow closing with prior values, and already applied settings are not cancelled. A failed write of a valid time/minute draft keeps the window open with inline retry feedback, without a dialog.
+- Added local saved, pending-input and failure feedback. Failed settings-file writes restore reminder/hotkey switches and language to the previous selection; numeric drafts remain editable while the previous valid values stay active.
+- Startup registration changes independently from ordinary settings. Added distinct registration states, an explicit Repair startup path action, Windows startup-settings and diagnostics-folder buttons. Unreadable registration blocks startup writes only. On failure, feedback is shown and actual registration is read again rather than assuming rollback succeeded; Windows' separate startup-disable decision is not overridden.
+- Hotkeys are re-registered only when their own option changes, with conflicts shown explicitly.
+- Added recoverable settings/state loading with original-file backups, in-memory fallback when recovery cannot safely write, and a persistent left-panel notice that can be explicitly dismissed.
+- Moved logs and recovery files to `%LOCALAPPDATA%\NightCue\Diagnostics`; added bounded log rotation and retained recovery backups after acknowledgement. Settings and reminder state remain beside the executable.
+- Updated all ten included languages and public documentation. Actual sign-in acceptance remains a separate desktop check.
+
+中文：当前源码改为自动保存，开关/语言即时提交，两个时间整组在 Enter 或离开区域时应用，分钟输入在 Enter 或失焦时应用，加减立即应用。关闭也尝试提交有效草稿，未完整或无效时允许关闭并沿用原值，已生效更改不撤销；有效时间/分钟草稿写盘失败则保留窗口及行内提示供重试，不弹对话框；设置文件写入失败局部提示，提醒/快捷键开关及语言回滚，数字保留草稿。启动注册独立写入，增加显式“修复启动路径”，不可读仅阻止启动更改，失败后提示并重读实际注册状态，不保证回滚必然成功；快捷键仅自身开关改变时重注册。配置恢复、诊断与持久提示同步完善，十种语言跟进。元数据保持 1.3.1，本轮不发布新包；下方历史版本交互仅供追溯。
+
 ## 1.3.1 — 2026-11-06
 
 ### Fixed

@@ -26,9 +26,9 @@ Sans pression ni interruption.</string>
   <string key="HotkeyLabel">Raccourci du thème</string>
   <string key="LanguageLabel">Langue / Language</string>
   <string key="SystemDefault">Suivre Windows</string>
-  <string key="LanguageHint">Aperçu de la langue · Enregistrez votre choix.</string>
+  <string key="LanguageHint">Les changements de langue s’enregistrent automatiquement.</string>
   <string key="More">Plus ···</string>
-  <string key="Save">Enregistrer et masquer</string>
+  <string key="Save">Réduire dans la zone de notification</string>
   <string key="HideHint">Reste actif dans la zone de notification</string>
   <string key="SwitchDark">Passer en mode sombre</string>
   <string key="SwitchLight">Passer en mode clair</string>
@@ -56,10 +56,10 @@ Sans pression ni interruption.</string>
   <string key="InvalidStart">Saisissez une heure de début, par exemple 23:00.</string>
   <string key="InvalidEnd">Saisissez une heure de fin, par exemple 07:00.</string>
   <string key="InvalidSnooze">Le report doit être compris entre 1 et 120 minutes.</string>
-  <string key="ReadFailure">Lecture ou enregistrement impossible. Consultez error.log.</string>
-  <string key="ThemeFailure">Impossible de changer le thème. Consultez error.log.</string>
-  <string key="SaveFailure">Impossible d’enregistrer les paramètres. Consultez error.log.</string>
-  <string key="StartFailure">NightCue n’a pas pu démarrer. Consultez error.log.</string>
+  <string key="ReadFailure">Impossible de lire ou d’enregistrer les données. Consultez les diagnostics.</string>
+  <string key="ThemeFailure">Impossible de changer le thème. Consultez les diagnostics.</string>
+  <string key="SaveFailure">Impossible d’enregistrer les paramètres. Consultez les diagnostics.</string>
+  <string key="StartFailure">NightCue n’a pas pu démarrer. Consultez les diagnostics.</string>
   <string key="MissingResource">La vue des paramètres est introuvable.</string>
   <string key="PreviewNotice">Aperçu uniquement. Aucun paramètre système ne sera modifié.</string>
   <string key="PreviewValid">Paramètres valides. L’aperçu n’enregistre rien.</string>
@@ -70,9 +70,9 @@ Sans pression ni interruption.</string>
 
 Un clic gauche sur l’icône ouvre les paramètres ; un clic droit ouvre le menu des thèmes et des rappels. Ctrl + Alt + Shift + D change aussi le thème. Aucun changement n’est automatique, même le matin.
 
-Les paramètres règlent les horaires, le délai et la langue. La langue reste en aperçu jusqu’à l’enregistrement. Fermer sans enregistrer rétablit la langue précédente. Suivre Windows utilise la langue d’affichage au démarrage, ou l’anglais si elle n’est pas disponible.
+Les paramètres s’enregistrent automatiquement. Les boutons et la langue s’appliquent immédiatement. Entrée ou quitter la section des horaires applique les deux heures ensemble. Les minutes s’appliquent avec Entrée ou en quittant le champ ; +/− est immédiat. Fermer applique les saisies valides et garde les anciennes valeurs pour les saisies invalides, sans annuler les changements enregistrés. Suivre Windows utilise la langue d’affichage au démarrage, avec l’anglais en repli. Une saisie incomplète ou invalide n’empêche pas de fermer. Si des horaires ou minutes valides ne peuvent pas être enregistrés, les paramètres restent ouverts avec une erreur près du champ pour réessayer, sans boîte de dialogue.
 
-NightCue fonctionne localement, sans réseau. Les réglages sont enregistrés près du programme. Avant de supprimer ou déplacer le dossier, désactivez le lancement à la connexion, enregistrez, puis quittez par le menu de l’icône.
+NightCue fonctionne localement, sans réseau. Les paramètres et l’état restent près du programme. Avant de le supprimer, désactivez le lancement à la connexion, vérifiez la confirmation puis quittez par le menu de l’icône. Après un déplacement, utilisez « Réparer le chemin de démarrage » si l’ancien emplacement est enregistré. Si un changement du démarrage échoue, un message apparaît et l’inscription est relue. Si elle est illisible, les commandes de démarrage sont désactivées et l’état est inconnu.
 
 Ouvrez la flèche près de l’horloge et faites glisser NightCue vers la barre des tâches. Vous pouvez aussi l’afficher dans les paramètres Windows de la barre des tâches (Windows 11 : autres icônes de la barre d’état système ; Windows 10 : sélectionner les icônes à afficher). Windows gère cette visibilité ; l’application ne peut pas s’épingler elle-même. Après l’heure de fin, un soleil doré propose le mode clair. Le thème ne change jamais automatiquement.</string>
   <string key="MorningLabel">Proposer le mode clair après l’heure de fin</string>
@@ -86,5 +86,25 @@ Ouvrez la flèche près de l’horloge et faites glisser NightCue vers la barre 
   <string key="TrayGuide">Garder l’icône visible…</string>
   <string key="TrayGuideBody">Ouvrez la flèche près de l’horloge et faites glisser NightCue vers la barre des tâches. Vous pouvez aussi l’afficher dans les paramètres Windows de la barre des tâches (Windows 11 : autres icônes de la barre d’état système ; Windows 10 : sélectionner les icônes à afficher). Windows gère cette visibilité ; l’application ne peut pas s’épingler elle-même. Après l’heure de fin, un soleil doré propose le mode clair. Le thème ne change jamais automatiquement.</string>
   <string key="TrayHint">Astuce : faites glisser NightCue des icônes masquées vers l’horloge.</string>
-  <string key="StartupRepair">Le démarrage pointe ailleurs. Enregistrez pour utiliser cette copie.</string>
+  <string key="StartupRepair">Autre emplacement enregistré · réparez le chemin</string>
+  <string key="StartupUnregistered">Désactivé · activez le bouton pour démarrer à la connexion</string>
+  <string key="StartupRegistered">Cette copie est enregistrée · Windows peut désactiver le démarrage</string>
+  <string key="StartupUnknown">Impossible de lire l’inscription au démarrage</string>
+  <string key="StartupPending">Mise à jour de l’inscription au démarrage…</string>
+  <string key="StartupWindows">Paramètres de démarrage Windows</string>
+  <string key="StartupDiagnostics">Ouvrir les diagnostics</string>
+  <string key="StartupOpenFailed">Impossible d’ouvrir cet emplacement. {0}</string>
+  <string key="RecoveryNotice">Un fichier de paramètres ou d’état des rappels n’a pas pu être chargé. Les valeurs par défaut sont utilisées. Consultez les diagnostics.</string>
+  <string key="RecoveryAcknowledge">Fermer l’avis de récupération</string>
+  <string key="StartupSub">Démarrer discrètement dans la zone de notification à la connexion</string>
+  <string key="AutoSaveHint">Les paramètres s’enregistrent automatiquement</string>
+  <string key="Saved">Enregistré</string>
+  <string key="SaveFailed">Enregistrement impossible. Le réglage précédent reste actif.</string>
+  <string key="InputPending">Terminez la saisie pour appliquer</string>
+  <string key="Hide">Réduire dans la zone de notification</string>
+  <string key="RepairStartup">Réparer le chemin de démarrage</string>
+  <string key="TimeHint">Appuyez sur Entrée ou quittez cette section pour appliquer les deux heures.</string>
+  <string key="SaveFailedShort">Non enregistré</string>
+  <string key="ApplyRefreshFailed">Paramètres enregistrés. Redémarrez NightCue pour terminer leur application.</string>
+  <string key="StartupUpdateFailed">La modification du démarrage n’a pas pu être confirmée. Vérifiez son état d’enregistrement.</string>
 </language>

@@ -32,9 +32,9 @@ The selector shows language names in their own language. The translations are in
 
 手动选择优先；默认 `system` 读取 Windows 显示语言，而非地区、时区或日历。繁体及台港澳使用繁中，其他中文变体使用简中；葡萄牙语暂用巴西葡语，其余地区变体回退到已有基础语言，不支持时使用英语。缺少词条时回退英语，但发布检查要求内置资源键名齐全。
 
-Selecting a language previews it immediately in the settings and tray text. **Save & hide** persists it. Closing without saving restores the previously saved preference. When **Follow Windows** is saved, restart NightCue after changing the Windows display language. OS-owned dialog buttons and window-system menus may continue to follow Windows rather than the app selection.
+In the current unreleased source, selecting a language applies it to settings/tray text and saves it immediately. A failed save restores the previous language and shows an error. Closing Settings does not undo a successfully applied choice. When **Follow Windows** is selected, restart NightCue after changing the Windows display language. OS-owned dialog buttons and window-system menus may continue to follow Windows rather than the app selection.
 
-选择语言会立即预览设置和托盘文案，保存后才持久化；关闭未保存的设置会恢复原偏好。选择跟随系统时，修改系统显示语言后需重启 NightCue。系统原生对话框按钮、窗口系统菜单仍可能使用 Windows 自身语言。
+当前未发布源码中，选择语言会立即应用设置/托盘文案并自动保存；保存失败则恢复原语言并提示错误。关闭设置不会撤销已成功应用的选择。选择跟随系统时，修改系统显示语言后需重启 NightCue。系统原生对话框按钮、窗口系统菜单仍可能使用 Windows 自身语言。
 
 ## Fonts and layout / 字体与布局
 
@@ -51,10 +51,10 @@ All current languages use left-to-right layout. Arabic, Hebrew and other right-t
 1. Start from [en.xml](../src/NightCue/Localization/Languages/en.xml). Add or edit an XML file in `src/NightCue/Localization/Languages/`, with a unique locale `code`, native `name` and suitable Windows `font`.
 2. Keep every key and each format placeholder such as `{0}` unchanged. Translate text only. Escape XML characters such as `&amp;`; preserve intentional line breaks. Use concise, natural wording and avoid changing the reminder's meaning.
 3. Resources are embedded automatically by both build paths as `NightCue.Languages.<code>.xml`. Add new files to `scripts/source-files.txt`; update the expected language count, fallback cases and UI checks in the test runner as needed.
-4. Run `build.ps1`. Inspect both light and dark render outputs, then try the real language list, keyboard navigation, validation messages and save/cancel behavior. Test missing optional fonts on a suitable machine where possible.
+4. Run `build.ps1`. Inspect both light and dark render outputs, then try the real language list, keyboard navigation, validation messages, automatic saving and save-failure recovery. Test missing optional fonts on a suitable machine where possible.
 5. Update the language lists in both READMEs and this document. Mention whether a native speaker reviewed the translation.
 
-以英语 XML 为模板，保留键名和 `{0}` 等占位符，填写原生语言名及合适字体。两种构建会自动嵌入语言文件，但仍需更新源码打包清单和相关测试。完成资源检查后，实际检查浅深色布局、下拉列表、键盘操作、错误提示及保存/取消，并同步中英文文档。
+以英语 XML 为模板，保留键名和 `{0}` 等占位符，填写原生语言名及合适字体。两种构建会自动嵌入语言文件，但仍需更新源码打包清单和相关测试。完成资源检查后，实际检查浅深色布局、下拉列表、键盘操作、错误提示、自动保存及失败恢复，并同步中英文文档。
 
 Time inputs retain 24-hour `HH:mm` format in every language. State identities use the invariant Gregorian date, and snooze deadlines use UTC. Translation must not change these persistence formats.
 

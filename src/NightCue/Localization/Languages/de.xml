@@ -26,9 +26,9 @@ Ohne Eile, ohne Störung.</string>
   <string key="HotkeyLabel">Design-Tastenkürzel</string>
   <string key="LanguageLabel">Sprache / Language</string>
   <string key="SystemDefault">Windows-Sprache verwenden</string>
-  <string key="LanguageHint">Sprachvorschau · Zum Übernehmen speichern.</string>
+  <string key="LanguageHint">Sprachänderungen werden automatisch gespeichert.</string>
   <string key="More">Mehr ···</string>
-  <string key="Save">Speichern &amp; schließen</string>
+  <string key="Save">In den Infobereich minimieren</string>
   <string key="HideHint">Läuft im Infobereich weiter</string>
   <string key="SwitchDark">Dunklen Modus aktivieren</string>
   <string key="SwitchLight">Hellen Modus aktivieren</string>
@@ -56,10 +56,10 @@ Ohne Eile, ohne Störung.</string>
   <string key="InvalidStart">Startzeit bitte im Format 23:00 eingeben.</string>
   <string key="InvalidEnd">Endzeit bitte im Format 07:00 eingeben.</string>
   <string key="InvalidSnooze">Die Wartezeit muss 1–120 Minuten betragen.</string>
-  <string key="ReadFailure">Lesen oder Speichern fehlgeschlagen. Siehe error.log im App-Ordner.</string>
-  <string key="ThemeFailure">Design konnte nicht geändert werden. Siehe error.log.</string>
-  <string key="SaveFailure">Einstellungen nicht gespeichert. Siehe error.log.</string>
-  <string key="StartFailure">NightCue konnte nicht starten. Siehe error.log im App-Ordner.</string>
+  <string key="ReadFailure">Daten konnten nicht gelesen oder gespeichert werden. Details stehen in der Diagnose.</string>
+  <string key="ThemeFailure">Das Design konnte nicht geändert werden. Details stehen in der Diagnose.</string>
+  <string key="SaveFailure">Die Einstellungen konnten nicht gespeichert werden. Details stehen in der Diagnose.</string>
+  <string key="StartFailure">NightCue konnte nicht starten. Details stehen in der Diagnose.</string>
   <string key="MissingResource">Die Einstellungsansicht fehlt.</string>
   <string key="PreviewNotice">Nur Vorschau. Systemeinstellungen bleiben unverändert.</string>
   <string key="PreviewValid">Einstellungen gültig. Die Vorschau speichert nichts.</string>
@@ -70,9 +70,9 @@ Ohne Eile, ohne Störung.</string>
 
 Ein Linksklick auf das Taskleistensymbol öffnet die Einstellungen; ein Rechtsklick öffnet das Menü für Designs und Erinnerungen. Auch Ctrl + Alt + Shift + D wechselt das Design. Es erfolgt nie ein automatischer Wechsel, auch nicht morgens.
 
-In den Einstellungen wählen Sie Zeitraum, Wartezeit und Sprache. Sprachänderungen sind bis zum Speichern eine Vorschau. Schließen ohne Speichern stellt die vorige Sprache wieder her. Die Windows-Sprache wird beim Start ermittelt; nicht verfügbare Sprachen werden durch Englisch ersetzt.
+Einstellungen werden automatisch gespeichert. Schalter und Sprache gelten sofort. Enter oder das Verlassen des Zeitbereichs übernimmt beide Zeiten zusammen; Minuten gelten nach Enter oder Verlassen des Feldes, +/− sofort. Beim Schließen werden gültige Eingaben übernommen, ungültige behalten den bisherigen Wert. Gespeicherte Änderungen werden nicht rückgängig gemacht. Die Windows-Sprache wird beim Start ermittelt; sonst wird Englisch verwendet. Unvollständige oder ungültige Eingaben verhindern das Schließen nicht. Können gültige Zeiten oder Minuten nicht gespeichert werden, bleiben die Einstellungen mit einem Fehler direkt am Feld zum erneuten Versuch geöffnet. Es erscheint kein Dialog.
 
-NightCue arbeitet lokal ohne Netzwerkzugriffe. Einstellungen liegen neben der Programmdatei. Vor dem Löschen oder Verschieben den Autostart deaktivieren, speichern und das Programm im Symbolmenü beenden.
+NightCue arbeitet lokal ohne Netzwerkzugriffe. Einstellungen und Status liegen neben der Programmdatei. Vor dem Löschen den Autostart ausschalten, den Erfolg prüfen und das Programm im Symbolmenü beenden. Nach dem Verschieben bei einem alten Eintrag „Startpfad reparieren“ wählen. Schlägt eine Autostart-Änderung fehl, erscheint ein Hinweis und die Registrierung wird erneut gelesen. Ist sie nicht lesbar, werden die Autostart-Steuerelemente deaktiviert und der Status als unbekannt angezeigt.
 
 Öffne den Pfeil neben der Uhr und ziehe NightCue auf die Taskleiste. Du kannst es auch in den Windows-Taskleisteneinstellungen einblenden (Windows 11: andere Taskleistensymbole; Windows 10: Symbole für die Anzeige auf der Taskleiste auswählen). Windows verwaltet die Sichtbarkeit; die App kann sich nicht selbst anheften. Nach der Endzeit schlägt eine goldene Sonne den hellen Modus vor. Das Design ändert sich nie automatisch.</string>
   <string key="MorningLabel">Nach der Endzeit an den hellen Modus erinnern</string>
@@ -86,5 +86,25 @@ NightCue arbeitet lokal ohne Netzwerkzugriffe. Einstellungen liegen neben der Pr
   <string key="TrayGuide">Symbol im Infobereich sichtbar halten…</string>
   <string key="TrayGuideBody">Öffne den Pfeil neben der Uhr und ziehe NightCue auf die Taskleiste. Du kannst es auch in den Windows-Taskleisteneinstellungen einblenden (Windows 11: andere Taskleistensymbole; Windows 10: Symbole für die Anzeige auf der Taskleiste auswählen). Windows verwaltet die Sichtbarkeit; die App kann sich nicht selbst anheften. Nach der Endzeit schlägt eine goldene Sonne den hellen Modus vor. Das Design ändert sich nie automatisch.</string>
   <string key="TrayHint">Tipp: Ziehe NightCue aus den ausgeblendeten Symbolen neben die Uhr.</string>
-  <string key="StartupRepair">Der Autostart verweist auf einen anderen Ort. Speichern aktualisiert ihn.</string>
+  <string key="StartupRepair">Anderer Ort registriert · Pfad reparieren</string>
+  <string key="StartupUnregistered">Aus · Schalter für den Autostart einschalten</string>
+  <string key="StartupRegistered">Für diese Kopie registriert · Windows kann den Start deaktivieren</string>
+  <string key="StartupUnknown">Autostart-Eintrag nicht lesbar</string>
+  <string key="StartupPending">Autostart-Eintrag wird aktualisiert…</string>
+  <string key="StartupWindows">Windows-Autostart-Einstellungen</string>
+  <string key="StartupDiagnostics">Diagnose öffnen</string>
+  <string key="StartupOpenFailed">Dieser Ort konnte nicht geöffnet werden. {0}</string>
+  <string key="RecoveryNotice">Einstellungen oder Erinnerungsstatus konnten nicht geladen werden. Standardwerte werden verwendet. Details stehen in der Diagnose.</string>
+  <string key="RecoveryAcknowledge">Wiederherstellungshinweis schließen</string>
+  <string key="StartupSub">Nach der Anmeldung still im Infobereich starten</string>
+  <string key="AutoSaveHint">Einstellungen werden automatisch gespeichert</string>
+  <string key="Saved">Gespeichert</string>
+  <string key="SaveFailed">Speichern fehlgeschlagen. Die bisherige Einstellung bleibt aktiv.</string>
+  <string key="InputPending">Zum Anwenden die Eingabe abschließen</string>
+  <string key="Hide">In den Infobereich minimieren</string>
+  <string key="RepairStartup">Startpfad reparieren</string>
+  <string key="TimeHint">Enter drücken oder diesen Bereich verlassen, um beide Zeiten anzuwenden.</string>
+  <string key="SaveFailedShort">Nicht gespeichert</string>
+  <string key="ApplyRefreshFailed">Einstellungen gespeichert. Starten Sie NightCue neu, um sie vollständig anzuwenden.</string>
+  <string key="StartupUpdateFailed">Die Autostart-Änderung konnte nicht bestätigt werden. Prüfen Sie den Registrierungsstatus.</string>
 </language>

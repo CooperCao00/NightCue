@@ -26,9 +26,9 @@
   <string key="HotkeyLabel">테마 전환 단축키</string>
   <string key="LanguageLabel">언어 / Language</string>
   <string key="SystemDefault">Windows 설정 따르기</string>
-  <string key="LanguageHint">언어 미리 보기입니다. 저장하면 선택이 유지됩니다.</string>
+  <string key="LanguageHint">언어 변경은 자동으로 저장됩니다.</string>
   <string key="More">더 보기 ···</string>
-  <string key="Save">저장 후 닫기</string>
+  <string key="Save">트레이로 숨기기</string>
   <string key="HideHint">닫아도 트레이에서 실행됩니다</string>
   <string key="SwitchDark">다크 모드로 전환</string>
   <string key="SwitchLight">라이트 모드로 전환</string>
@@ -56,10 +56,10 @@
   <string key="InvalidStart">시작 시간을 23:00 형식으로 입력하세요.</string>
   <string key="InvalidEnd">종료 시간을 07:00 형식으로 입력하세요.</string>
   <string key="InvalidSnooze">다시 알림은 1~120분으로 설정하세요.</string>
-  <string key="ReadFailure">읽기 또는 저장 실패. 앱 폴더의 error.log를 확인하세요.</string>
-  <string key="ThemeFailure">테마를 바꾸지 못했습니다. error.log를 확인하세요.</string>
-  <string key="SaveFailure">설정을 저장하지 못했습니다. error.log를 확인하세요.</string>
-  <string key="StartFailure">NightCue를 시작하지 못했습니다. 앱 폴더의 error.log를 확인하세요.</string>
+  <string key="ReadFailure">데이터를 읽거나 저장할 수 없습니다. 진단에서 자세한 내용을 확인하세요.</string>
+  <string key="ThemeFailure">테마를 바꾸지 못했습니다. 진단에서 자세한 내용을 확인하세요.</string>
+  <string key="SaveFailure">설정을 저장하지 못했습니다. 진단에서 자세한 내용을 확인하세요.</string>
+  <string key="StartFailure">NightCue를 시작하지 못했습니다. 진단에서 자세한 내용을 확인하세요.</string>
   <string key="MissingResource">설정 화면 리소스가 없습니다.</string>
   <string key="PreviewNotice">미리 보기입니다. 시스템 설정은 바뀌지 않습니다.</string>
   <string key="PreviewValid">설정이 올바릅니다. 미리 보기에서는 저장하지 않습니다.</string>
@@ -70,9 +70,9 @@
 
 트레이 아이콘을 왼쪽 클릭하면 설정이 열리고, 오른쪽 클릭하면 테마 전환과 알림 메뉴가 열립니다. Ctrl + Alt + Shift + D로도 전환합니다. 아침을 포함해 테마는 자동으로 바뀌지 않습니다.
 
-설정에서 시간대, 다시 알림 간격, 언어를 선택하세요. 언어는 저장 전까지 미리 보기이며, 저장하지 않고 닫으면 이전 언어로 돌아갑니다. Windows 설정 따르기는 시작 시 표시 언어를 사용하며, 지원하지 않으면 영어를 사용합니다.
+설정은 자동으로 저장되며 스위치와 언어 변경은 즉시 적용됩니다. 시간 영역에서 Enter를 누르거나 영역을 벗어나면 두 시각이 함께 적용됩니다. 분 입력은 Enter 또는 입력란을 벗어날 때, +/− 버튼은 즉시 적용됩니다. 닫을 때 유효한 입력은 적용하고 잘못된 입력은 이전 값을 유지합니다. 저장된 변경은 취소하지 않습니다. Windows 설정 따르기는 시작 시 표시 언어를 사용하며 미지원 언어는 영어로 표시합니다. 불완전하거나 잘못된 입력이 있어도 닫을 수 있습니다. 유효한 시각이나 분 값을 저장하지 못하면 설정 창을 유지하고 해당 항목에 오류를 표시해 다시 시도할 수 있으며 대화상자는 띄우지 않습니다.
 
-네트워크 요청 없이 로컬에서 실행됩니다. 설정은 실행 파일 옆에 저장됩니다. 삭제하거나 옮기기 전에 로그인 시 실행을 끄고 저장한 뒤 트레이에서 종료하세요.
+네트워크 요청 없이 로컬에서 실행됩니다. 설정과 상태는 실행 파일 옆에 저장됩니다. 삭제 전 로그인 시 실행을 끄고 성공을 확인한 뒤 트레이에서 종료하세요. 이동 후 이전 위치가 등록되어 있으면 시작 경로 복구를 선택하세요. 시작 설정 변경에 실패하면 안내를 표시하고 실제 등록 상태를 다시 읽습니다. 읽을 수 없으면 시작 제어가 비활성화되고 상태가 알 수 없음으로 표시됩니다.
 
 시계 옆 숨겨진 아이콘 화살표를 누르고 NightCue를 작업 표시줄로 끌어오세요. Windows 작업 표시줄 설정에서도 표시할 수 있습니다(Windows 11: 기타 시스템 트레이 아이콘, Windows 10: 작업 표시줄에 표시할 아이콘 선택). 표시는 Windows가 관리하므로 앱이 직접 고정할 수 없습니다. 종료 시각 이후 금색 해가 라이트 모드를 제안하며 테마는 자동으로 바뀌지 않습니다.</string>
   <string key="MorningLabel">종료 시각 이후 라이트 모드 알림</string>
@@ -86,5 +86,25 @@
   <string key="TrayGuide">트레이 아이콘을 항상 표시…</string>
   <string key="TrayGuideBody">시계 옆 숨겨진 아이콘 화살표를 누르고 NightCue를 작업 표시줄로 끌어오세요. Windows 작업 표시줄 설정에서도 표시할 수 있습니다(Windows 11: 기타 시스템 트레이 아이콘, Windows 10: 작업 표시줄에 표시할 아이콘 선택). 표시는 Windows가 관리하므로 앱이 직접 고정할 수 없습니다. 종료 시각 이후 금색 해가 라이트 모드를 제안하며 테마는 자동으로 바뀌지 않습니다.</string>
   <string key="TrayHint">팁: 숨겨진 NightCue 아이콘을 시계 옆으로 끌어오세요.</string>
-  <string key="StartupRepair">시작 등록이 다른 위치를 가리킵니다. 저장하면 현재 앱으로 업데이트됩니다.</string>
+  <string key="StartupRepair">다른 위치로 등록됨 · 경로를 복구하세요</string>
+  <string key="StartupUnregistered">꺼짐 · 스위치를 켜면 로그인 시 시작</string>
+  <string key="StartupRegistered">현재 앱 등록됨 · Windows에서 비활성화했을 수 있음</string>
+  <string key="StartupUnknown">시작 등록 정보를 읽을 수 없음</string>
+  <string key="StartupPending">시작 등록 정보 업데이트 중…</string>
+  <string key="StartupWindows">Windows 시작 설정</string>
+  <string key="StartupDiagnostics">진단 열기</string>
+  <string key="StartupOpenFailed">이 위치를 열지 못했습니다. {0}</string>
+  <string key="RecoveryNotice">설정 또는 알림 상태 파일을 불러올 수 없어 기본값을 사용합니다. 진단에서 자세한 내용을 확인하세요.</string>
+  <string key="RecoveryAcknowledge">복구 알림 닫기</string>
+  <string key="StartupSub">로그인 후 트레이에서 조용히 시작</string>
+  <string key="AutoSaveHint">설정이 자동으로 저장됩니다</string>
+  <string key="Saved">저장됨</string>
+  <string key="SaveFailed">저장하지 못했습니다. 이전 설정이 계속 적용됩니다.</string>
+  <string key="InputPending">편집을 마치면 적용됩니다</string>
+  <string key="Hide">트레이로 숨기기</string>
+  <string key="RepairStartup">시작 경로 복구</string>
+  <string key="TimeHint">Enter를 누르거나 이 영역을 벗어나면 두 시각이 함께 적용됩니다.</string>
+  <string key="SaveFailedShort">저장 안 됨</string>
+  <string key="ApplyRefreshFailed">설정이 저장되었습니다. 적용을 완료하려면 NightCue를 다시 시작하세요.</string>
+  <string key="StartupUpdateFailed">자동 시작 변경을 확인하지 못했습니다. 등록 상태를 확인하세요.</string>
 </language>

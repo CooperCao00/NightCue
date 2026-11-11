@@ -26,9 +26,9 @@
   <string key="HotkeyLabel">快捷键切换</string>
   <string key="LanguageLabel">语言 / Language</string>
   <string key="SystemDefault">跟随系统</string>
-  <string key="LanguageHint">语言已预览，保存后保留你的选择。</string>
+  <string key="LanguageHint">语言更改会自动保存。</string>
   <string key="More">更多操作 ···</string>
-  <string key="Save">保存并收起</string>
+  <string key="Save">收起到托盘</string>
   <string key="HideHint">收起后继续在托盘运行</string>
   <string key="SwitchDark">进入深色模式</string>
   <string key="SwitchLight">切换到浅色模式</string>
@@ -56,10 +56,10 @@
   <string key="InvalidStart">开始时间请填写为 23:00 这样的格式。</string>
   <string key="InvalidEnd">结束时间请填写为 07:00 这样的格式。</string>
   <string key="InvalidSnooze">延后时间须为 1–120 分钟。</string>
-  <string key="ReadFailure">保存或读取失败，请查看文件夹内的 error.log。</string>
-  <string key="ThemeFailure">无法切换主题，请查看 error.log。</string>
-  <string key="SaveFailure">未能保存设置，请查看 error.log。</string>
-  <string key="StartFailure">夜色提醒未能启动，详情见文件夹中的 error.log。</string>
+  <string key="ReadFailure">无法读取或保存数据，请打开诊断查看详情。</string>
+  <string key="ThemeFailure">无法切换主题，请打开诊断查看详情。</string>
+  <string key="SaveFailure">未能保存设置，请打开诊断查看详情。</string>
+  <string key="StartFailure">NightCue 未能启动，请打开诊断查看详情。</string>
   <string key="MissingResource">找不到界面资源。</string>
   <string key="PreviewNotice">界面预览，不会改变系统设置。</string>
   <string key="PreviewValid">设置格式正确。预览模式不会保存或更改系统。</string>
@@ -70,9 +70,9 @@
 
 左键点击托盘图标打开设置；右键打开主题切换、延后与提醒菜单。 Ctrl + Alt + Shift + D 也可切换。程序不会自动换色，包括早晨。
 
-设置中可修改提醒时段、延后和语言。切换语言先预览，保存后生效；不保存直接关闭会恢复原语言。“跟随系统”在启动时匹配 Windows 显示语言，不支持的语言回退英语。
+设置自动保存，开关和语言更改立即生效。按 Enter 或离开时间区域，一并应用两个时间；分钟输入按 Enter 或离开输入框时应用，加减按钮立即应用。关闭时尝试提交有效草稿，无效草稿沿用原值，不撤销已保存的更改。“跟随系统”启动时读取显示语言，不支持时使用英语。 未填完整或无效的输入允许关闭。有效时间或分钟草稿若写盘失败，窗口保留并显示行内提示以便重试，不弹对话框。
 
-程序完全本地运行，无网络请求。设置与当晚选择保存在程序旁。卸载或移动前，先关闭登录启动并保存，从托盘退出，再删除或移动文件夹。
+程序完全本地运行，无网络请求。设置和状态仍在程序旁。卸载前关闭登录启动，确认成功后从托盘退出；移动程序后，若注册项指向旧位置，点击“修复启动路径”。 自启动更改失败会显示提示并重新读取实际注册状态；若无法读取，启动控件禁用并显示未知状态。
 
 点击时钟旁的隐藏图标箭头，将 NightCue 拖到任务栏。也可以在 Windows 任务栏设置中启用 NightCue（Windows 11：其他系统托盘图标；Windows 10：选择哪些图标显示在任务栏上）。图标显示由 Windows 管理，软件不能自行固定。结束时间后，金色太阳提示可以切换浅色，始终由你决定是否切换。</string>
   <string key="MorningLabel">结束时间后提醒切换浅色</string>
@@ -86,5 +86,25 @@
   <string key="TrayGuide">让托盘图标始终可见…</string>
   <string key="TrayGuideBody">点击时钟旁的隐藏图标箭头，将 NightCue 拖到任务栏。也可以在 Windows 任务栏设置中启用 NightCue（Windows 11：其他系统托盘图标；Windows 10：选择哪些图标显示在任务栏上）。图标显示由 Windows 管理，软件不能自行固定。结束时间后，金色太阳提示可以切换浅色，始终由你决定是否切换。</string>
   <string key="TrayHint">小提示：把 NightCue 从隐藏图标区拖到时钟旁，提醒才容易看到。</string>
-  <string key="StartupRepair">自启动仍指向其他位置。保存后将改为当前程序。</string>
+  <string key="StartupRepair">已注册其他位置 · 请修复路径</string>
+  <string key="StartupUnregistered">已关闭 · 开启开关即可登录启动</string>
+  <string key="StartupRegistered">已注册当前程序 · Windows 仍可能禁用启动</string>
+  <string key="StartupUnknown">无法读取自启动注册信息</string>
+  <string key="StartupPending">正在更新启动注册信息…</string>
+  <string key="StartupWindows">Windows 启动设置</string>
+  <string key="StartupDiagnostics">打开诊断</string>
+  <string key="StartupOpenFailed">无法打开此位置。{0}</string>
+  <string key="RecoveryNotice">设置或提醒状态文件无法加载，当前使用默认值。请打开诊断查看详情。</string>
+  <string key="RecoveryAcknowledge">关闭恢复提示</string>
+  <string key="StartupSub">登录后安静地在托盘运行</string>
+  <string key="AutoSaveHint">设置自动保存</string>
+  <string key="Saved">已保存</string>
+  <string key="SaveFailed">保存失败，仍使用原设置。</string>
+  <string key="InputPending">完成编辑后生效</string>
+  <string key="Hide">收起到托盘</string>
+  <string key="RepairStartup">修复启动路径</string>
+  <string key="TimeHint">按 Enter 或离开此区域，一并应用两个时间。</string>
+  <string key="SaveFailedShort">未保存</string>
+  <string key="ApplyRefreshFailed">设置已保存，请重启 NightCue 以完成应用。</string>
+  <string key="StartupUpdateFailed">无法确认启动项更改，请检查注册状态。</string>
 </language>

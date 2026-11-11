@@ -32,11 +32,11 @@ The packaging script builds and tests in a fresh staging directory, uses an expl
 - Pin the tray icon. Confirm the cue becomes amber at the configured start and returns quietly after snoozing; no sound, banner or focus change.
 - Test an overnight window, keep-light choice, restart, restore and end time. At End, confirm the optional gold-sun cue appears while dark; test snooze, keep-dark and restore independently of the next night. Neither boundary may change the theme.
 - Check both theme buttons, tray commands, hotkey enable/disable/conflict and external theme changes.
-- Check the settings window in light/dark mode, long translated strings, the language dropdown, keyboard navigation and relevant DPI settings. Verify manual-language save, unsaved cancellation and Follow Windows on a different display language.
-- Test startup enabled/disabled with an actual sign-out/sign-in or reboot, not only a registry read. Test moving the folder and saving to repair the path; check Task Manager overrides and uninstall. Restore personal settings changed during testing.
+- Check the settings window in light/dark mode, long translated strings, the language dropdown, keyboard navigation and relevant DPI settings. Verify immediate language saving, failure rollback and Follow Windows on a different display language. Verify grouped-time commits, minute edits and valid/invalid drafts when hiding or closing.
+- Test startup enabled/disabled with an actual sign-out/sign-in or reboot, not only a registry read. Test moving the folder and the explicit Repair startup path action; check Task Manager overrides and uninstall. Restore personal settings changed during testing.
 - Exit the old version before upgrade; preserve XML files. Test a clean unzip in a writable path, including a path with spaces and non-ASCII characters.
 
-人工验证包括关闭设置后左键重开、最小化恢复、右键菜单及重复启动，再检查夜间/早晨独立提醒、延后、跨午夜、重启、手动切换、快捷键、十种语言的浅深色布局、下拉操作、保存/取消、缩放、迁移后的启动路径、实际注销登录或重启及卸载。注册项存在不能替代登录验证。升级前退出旧程序并保留 XML；测试纯净解压路径及包含中文/空格的路径。自动测试不代替这些桌面检查。
+人工验证包括关闭设置后左键重开、最小化恢复、右键菜单及重复启动，再检查夜间/早晨独立提醒、延后、跨午夜、重启、手动切换、快捷键、十种语言的浅深色布局、下拉操作、自动保存、失败恢复与关闭草稿处理、缩放、迁移后的启动路径、实际注销登录或重启及卸载。注册项存在不能替代登录验证。升级前退出旧程序并保留 XML；测试纯净解压路径及包含中文/空格的路径。自动测试不代替这些桌面检查。
 
 ## Validation record / 验证记录
 

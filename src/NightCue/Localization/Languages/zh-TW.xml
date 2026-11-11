@@ -26,9 +26,9 @@
   <string key="HotkeyLabel">快捷鍵切換</string>
   <string key="LanguageLabel">語言 / Language</string>
   <string key="SystemDefault">跟隨系統</string>
-  <string key="LanguageHint">已預覽語言，儲存後保留你的選擇。</string>
+  <string key="LanguageHint">語言變更會自動儲存。</string>
   <string key="More">更多操作 ···</string>
-  <string key="Save">儲存並收起</string>
+  <string key="Save">縮小至系統匣</string>
   <string key="HideHint">收起後繼續在系統匣執行</string>
   <string key="SwitchDark">切換至深色模式</string>
   <string key="SwitchLight">切換至淺色模式</string>
@@ -56,10 +56,10 @@
   <string key="InvalidStart">開始時間請填寫為 23:00 這樣的格式。</string>
   <string key="InvalidEnd">結束時間請填寫為 07:00 這樣的格式。</string>
   <string key="InvalidSnooze">延後時間須為 1–120 分鐘。</string>
-  <string key="ReadFailure">儲存或讀取失敗，請查看資料夾內的 error.log。</string>
-  <string key="ThemeFailure">無法切換佈景主題，請查看 error.log。</string>
-  <string key="SaveFailure">未能儲存設定，請查看 error.log。</string>
-  <string key="StartFailure">夜色提醒未能啟動，詳情見資料夾中的 error.log。</string>
+  <string key="ReadFailure">無法讀取或儲存資料，請開啟診斷查看詳情。</string>
+  <string key="ThemeFailure">無法切換佈景主題，請開啟診斷查看詳情。</string>
+  <string key="SaveFailure">未能儲存設定，請開啟診斷查看詳情。</string>
+  <string key="StartFailure">NightCue 未能啟動，請開啟診斷查看詳情。</string>
   <string key="MissingResource">找不到介面資源。</string>
   <string key="PreviewNotice">介面預覽，不會變更系統設定。</string>
   <string key="PreviewValid">設定格式正確。預覽模式不會儲存或變更系統。</string>
@@ -70,9 +70,9 @@
 
 左鍵點擊系統匣圖示開啟設定；右鍵開啟主題切換、延後與提醒選單。 Ctrl + Alt + Shift + D 也可切換。程式不會自動換色，包括早晨。
 
-設定中可修改提醒時段、延後與語言。切換語言先預覽，儲存後生效；不儲存直接關閉會恢復原語言。「跟隨系統」在啟動時配合 Windows 顯示語言，不支援的語言使用英語。
+設定自動儲存，開關與語言變更立即生效。按 Enter 或離開時間區域，一併套用兩個時間；分鐘輸入按 Enter 或離開輸入框時套用，加減按鈕立即套用。關閉時嘗試提交有效草稿，無效草稿沿用原值，不撤銷已儲存的變更。「跟隨系統」啟動時讀取顯示語言，不支援時使用英語。 未填完整或無效的輸入仍可關閉。有效時間或分鐘草稿若寫入失敗，視窗保留並顯示行內提示以便重試，不彈出對話方塊。
 
-程式完全在本機執行，無網路請求。設定與當晚選擇儲存在程式旁。解除安裝或移動前，先關閉登入啟動並儲存，從系統匣結束程式，再刪除或移動資料夾。
+程式完全在本機執行，無網路請求。設定與狀態仍在程式旁。解除安裝前關閉登入啟動，確認成功後從系統匣結束；移動程式後，若註冊項指向舊位置，點選「修復啟動路徑」。 自動啟動變更失敗會顯示提示並重新讀取實際註冊狀態；若無法讀取，啟動控制項會停用並顯示未知狀態。
 
 點選時鐘旁的隱藏圖示箭頭，將 NightCue 拖曳到工作列。也可以在 Windows 工作列設定中啟用 NightCue（Windows 11：其他系統匣圖示；Windows 10：選取要顯示在工作列上的圖示）。圖示顯示由 Windows 管理，軟體無法自行釘選。結束時間後，金色太陽提示可以切換淺色，始終由你決定是否切換。</string>
   <string key="MorningLabel">結束時間後提醒切換淺色</string>
@@ -86,5 +86,25 @@
   <string key="TrayGuide">讓系統匣圖示保持可見…</string>
   <string key="TrayGuideBody">點選時鐘旁的隱藏圖示箭頭，將 NightCue 拖曳到工作列。也可以在 Windows 工作列設定中啟用 NightCue（Windows 11：其他系統匣圖示；Windows 10：選取要顯示在工作列上的圖示）。圖示顯示由 Windows 管理，軟體無法自行釘選。結束時間後，金色太陽提示可以切換淺色，始終由你決定是否切換。</string>
   <string key="TrayHint">小提示：將 NightCue 從隱藏圖示區拖曳到時鐘旁，方便看到提醒。</string>
-  <string key="StartupRepair">自動啟動仍指向其他位置。儲存後將改用目前的程式。</string>
+  <string key="StartupRepair">已註冊其他位置 · 請修復路徑</string>
+  <string key="StartupUnregistered">已關閉 · 開啟開關即可登入啟動</string>
+  <string key="StartupRegistered">已註冊目前程式 · Windows 仍可能停用啟動</string>
+  <string key="StartupUnknown">無法讀取自動啟動註冊資訊</string>
+  <string key="StartupPending">正在更新啟動註冊資訊…</string>
+  <string key="StartupWindows">Windows 啟動設定</string>
+  <string key="StartupDiagnostics">開啟診斷</string>
+  <string key="StartupOpenFailed">無法開啟此位置。{0}</string>
+  <string key="RecoveryNotice">設定或提醒狀態檔案無法載入，目前使用預設值。請開啟診斷查看詳情。</string>
+  <string key="RecoveryAcknowledge">關閉復原提示</string>
+  <string key="StartupSub">登入後安靜地在系統匣執行</string>
+  <string key="AutoSaveHint">設定自動儲存</string>
+  <string key="Saved">已儲存</string>
+  <string key="SaveFailed">儲存失敗，仍使用原設定。</string>
+  <string key="InputPending">完成編輯後生效</string>
+  <string key="Hide">縮小至系統匣</string>
+  <string key="RepairStartup">修復啟動路徑</string>
+  <string key="TimeHint">按 Enter 或離開此區域，一併套用兩個時間。</string>
+  <string key="SaveFailedShort">未儲存</string>
+  <string key="ApplyRefreshFailed">設定已儲存，請重新啟動 NightCue 以完成套用。</string>
+  <string key="StartupUpdateFailed">無法確認啟動項變更，請檢查註冊狀態。</string>
 </language>

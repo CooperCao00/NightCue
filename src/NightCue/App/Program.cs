@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -11,8 +12,18 @@ namespace NightCue
         {
             bool background = Array.IndexOf(args, "--background") >= 0;
             bool install = Array.IndexOf(args, "--install") >= 0;
+            string launch = "Launch metadata unavailable";
             try
             {
+                launch = "version=" + Assembly.GetExecutingAssembly().GetName().Version +
+                    "; executable=" + Application.ExecutablePath + "; arguments=" + String.Join(" | ", args);
+                Store.Diagnostics("startup-attempt", launch);
+                AppDomain.CurrentDomain.UnhandledException += delegate(object sender, UnhandledExceptionEventArgs e)
+                {
+                    Store.Diagnostics("unhandled-exception", launch + "; terminating=" + e.IsTerminating);
+                    Exception failure = e.ExceptionObject as Exception;
+                    if (failure != null) Store.Log(failure);
+                };
                 Native.SetProcessDPIAware();
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -23,6 +34,7 @@ namespace NightCue
                 {
                     if (!created)
                     {
+                        Store.Diagnostics("duplicate-instance", launch + "; action=" + (background ? "exit-background-copy" : "signal-existing-instance"));
                         if (!background)
                             signal.Set();
                         return;
@@ -32,9 +44,13 @@ namespace NightCue
                     {
                         Application.ThreadException += delegate (object s, ThreadExceptionEventArgs e)
                         {
+                            Store.Diagnostics("ui-thread-exception", launch);
                             Store.Log(e.Exception);
                         };
-                        Application.Run(new TrayApp(install, !background, signal));
+                        TrayApp application = new TrayApp(install, !background, signal);
+                        Store.Diagnostics("tray-initialized", launch + "; background=" + background);
+                        Application.Run(application);
+                        Store.Diagnostics("normal-exit", launch);
                     }
                     finally
                     {
@@ -44,6 +60,7 @@ namespace NightCue
             }
             catch (Exception e)
             {
+                Store.Diagnostics("startup-or-run-failed", launch);
                 Store.Log(e);
                 if (!background)
                     MessageBox.Show(L.Text("StartFailure"), "NightCue", MessageBoxButtons.OK, MessageBoxIcon.Information);
